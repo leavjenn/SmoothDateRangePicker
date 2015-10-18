@@ -648,7 +648,8 @@ public abstract class MonthView extends View {
         if (mController == null) {
             return false;
         }
-        Calendar minDate = mController.getMinDate();
+//        Calendar minDate = mController.getMinDate();
+        Calendar minDate = mController.getMinSelectableDate();
         if (minDate == null) {
             return false;
         }

@@ -49,6 +49,8 @@ public interface DateRangePickerController {
 
     Calendar getMinDate();
 
+    Calendar getMinSelectableDate();
+
     Calendar getMaxDate();
 
     void tryVibrate();

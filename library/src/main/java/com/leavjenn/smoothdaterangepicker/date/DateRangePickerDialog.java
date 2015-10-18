@@ -142,7 +142,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
     private int mMinYear = DEFAULT_START_YEAR;
     private int mMaxYear = DEFAULT_END_YEAR;
     private Calendar mMinDate;
-    private Calendar mMinDateSelectable;
+    private Calendar mMinSelectableDate;
     private Calendar mMaxDate;
     private Calendar[] highlightedDays;
     private Calendar[] selectableDays;
@@ -203,8 +203,8 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
      * @param dayOfMonth  The initial day of the dialog.
      */
     public static DateRangePickerDialog newInstance(OnDateSetListener callBack, int year,
-                                                int monthOfYear,
-                                                int dayOfMonth) {
+                                                    int monthOfYear,
+                                                    int dayOfMonth) {
         DateRangePickerDialog ret = new DateRangePickerDialog();
         ret.initialize(callBack, year, monthOfYear, dayOfMonth);
         return ret;
@@ -284,7 +284,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
         outState.putInt(KEY_LIST_POSITION_END, listPositionEnd);
         outState.putSerializable(KEY_MIN_DATE, mMinDate);
         outState.putSerializable(KEY_MAX_DATE, mMaxDate);
-        outState.putSerializable(KEY_MIN_DATE_SELECTABLE, mMinDateSelectable);
+        outState.putSerializable(KEY_MIN_DATE_SELECTABLE, mMinSelectableDate);
         outState.putSerializable(KEY_HIGHLIGHTED_DAYS, highlightedDays);
         outState.putSerializable(KEY_SELECTABLE_DAYS, selectableDays);
         outState.putBoolean(KEY_THEME_DARK, mThemeDark);
@@ -354,7 +354,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
             listPositionOffsetEnd = savedInstanceState.getInt(KEY_LIST_POSITION_OFFSET_END);
             mMinDate = (Calendar) savedInstanceState.getSerializable(KEY_MIN_DATE);
             mMaxDate = (Calendar) savedInstanceState.getSerializable(KEY_MAX_DATE);
-            mMinDateSelectable = (Calendar) savedInstanceState.getSerializable(KEY_MIN_DATE_SELECTABLE);
+            mMinSelectableDate = (Calendar) savedInstanceState.getSerializable(KEY_MIN_DATE_SELECTABLE);
             highlightedDays = (Calendar[]) savedInstanceState.getSerializable(KEY_HIGHLIGHTED_DAYS);
             selectableDays = (Calendar[]) savedInstanceState.getSerializable(KEY_SELECTABLE_DAYS);
             mThemeDark = savedInstanceState.getBoolean(KEY_THEME_DARK);
@@ -520,8 +520,8 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
         switch (viewIndex) {
             case MONTH_AND_DAY_VIEW:
                 //TODO temp change minDate to null
-                mMinDate = null;
-//                mMinDateSelectable = null;
+//                mMinDate = null;
+                mMinSelectableDate = mMinDate;
                 mDayPickerView.onDateChanged();
 
                 int flags = DateUtils.FORMAT_SHOW_DATE;
@@ -535,8 +535,8 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
                     mCalendarEnd.setTime(mCalendar.getTime());
                 }
                 //TODO temp change minDate to start day
-                mMinDate = mCalendar;
-//                mMinDateSelectable = mCalendar;
+//                mMinDate = mCalendar;
+                mMinSelectableDate = mCalendar;
                 mDayPickerViewEnd.onDateChanged();
 
                 flags = DateUtils.FORMAT_SHOW_DATE;
@@ -548,8 +548,8 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
                 break;
             case YEAR_VIEW:
                 //TODO temp change mMinDate to null
-                mMinDate = null;
-//                mMinDateSelectable = null;
+//                mMinDate = null;
+                mMinSelectableDate = mMinDate;
                 mYearPickerView.onDateChanged();
 
                 CharSequence yearString = YEAR_FORMAT.format(millis);
@@ -558,8 +558,8 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
                 break;
             case YEAR_VIEW_END:
                 //TODO temp change minDate to start day
-                mMinDate = mCalendar;
-//                mMinDateSelectable = mCalendar;
+//                mMinDate = mCalendar;
+                mMinSelectableDate = mCalendar;
                 mYearPickerViewEnd.onDateChanged();
                 mYearPickerViewEnd.refreshYearAdapter();
 
@@ -761,6 +761,15 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
     }
 
     /**
+     * @return The minimal date can be selected by this DatePicker. return mMinDate if
+     * mMonthAndDayView is showing.
+     */
+    @Override
+    public Calendar getMinSelectableDate() {
+        return mMinSelectableDate;
+    }
+
+    /**
      * Sets the minimal date supported by this DatePicker. Dates after (but not including) the
      * specified date will be disallowed from being selected.
      *
@@ -956,6 +965,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
             mCalendarEnd.setTime(mCalendar.getTime());
             mCalendarEnd.add(Calendar.DATE, mDuration);
         }
+
         updateHighlightDays();
         updateDisplay(true);
     }
@@ -977,7 +987,10 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
     public int getMinYear() {
         if (selectableDays != null) return selectableDays[0].get(Calendar.YEAR);
         // Ensure no years can be selected outside of the given minimum date
-        return mMinDate != null && mMinDate.get(Calendar.YEAR) > mMinYear ? mMinDate.get(Calendar.YEAR) : mMinYear;
+//        return mMinDate != null && mMinDate.get(Calendar.YEAR) > mMinYear ?
+//                mMinDate.get(Calendar.YEAR) : mMinYear;
+        return mMinSelectableDate != null && mMinSelectableDate.get(Calendar.YEAR) > mMinYear ?
+                mMinSelectableDate.get(Calendar.YEAR) : mMinYear;
     }
 
     @Override
@@ -985,7 +998,8 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
         if (selectableDays != null)
             return selectableDays[selectableDays.length - 1].get(Calendar.YEAR);
         // Ensure no years can be selected outside of the given maximum date
-        return mMaxDate != null && mMaxDate.get(Calendar.YEAR) < mMaxYear ? mMaxDate.get(Calendar.YEAR) : mMaxYear;
+        return mMaxDate != null && mMaxDate.get(Calendar.YEAR) < mMaxYear ?
+                mMaxDate.get(Calendar.YEAR) : mMaxYear;
     }
 
     @Override
