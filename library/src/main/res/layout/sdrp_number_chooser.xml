@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialpad"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_marginTop="20dp"
+    android:stretchColumns="1"
+    android:shrinkColumns="1"
+    android:paddingBottom="10dp"
+    android:paddingLeft="4dp"
+    android:paddingRight="6dp">
+
+    <TableRow
+        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        >
+
+        <Button
+            android:id="@+id/btn_one"
+            style="@style/PadButtonStyle"
+            android:contentDescription="one"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/btn_two"
+            style="@style/PadButtonStyle"
+            android:contentDescription="two"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/btn_three"
+            style="@style/PadButtonStyle"
+            android:contentDescription="three"
+            android:text="3" />
+    </TableRow>
+
+    <TableRow
+        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        >
+
+        <Button
+            android:id="@+id/btn_four"
+            style="@style/PadButtonStyle"
+            android:contentDescription="four"
+            android:text="4" />
+
+        <Button
+            android:id="@+id/btn_five"
+            style="@style/PadButtonStyle"
+            android:contentDescription="five"
+            android:text="5" />
+
+        <Button
+            android:id="@+id/btn_six"
+            style="@style/PadButtonStyle"
+            android:contentDescription="six"
+            android:text="6" />
+    </TableRow>
+
+    <TableRow
+        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        >
+
+        <Button
+            android:id="@+id/btn_seven"
+            style="@style/PadButtonStyle"
+            android:contentDescription="seven"
+            android:text="7" />
+
+        <Button
+            android:id="@+id/btn_eight"
+            style="@style/PadButtonStyle"
+            android:contentDescription="eight"
+            android:text="8" />
+
+        <Button
+            android:id="@+id/btn_nine"
+            style="@style/PadButtonStyle"
+            android:contentDescription="nine"
+            android:text="9" />
+    </TableRow>
+
+    <TableRow
+        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        >
+
+        <Button
+            android:id="@+id/btn_zero"
+            style="@style/PadButtonStyle"
+            android:contentDescription="zero"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/btn_delete"
+            style="@style/PadButtonStyle"
+            android:contentDescription="delete"
+            android:text="DEL"
+            android:layout_column="2" />
+    </TableRow>
+</TableLayout>
