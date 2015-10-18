@@ -14,11 +14,11 @@ import java.util.Arrays;
 
 public class NumberChooserView extends TableLayout implements View.OnClickListener {
     Context mContext;
-    RangePickerController mController;
+    DateRangePickerController mController;
     Button btnNum0, btnNum1, btnNum2, btnNum3, btnNum4, btnNum5,
             btnNum6, btnNum7, btnNum8, btnNum9, btnDel;
 
-    public NumberChooserView(Context context, RangePickerController controller) {
+    public NumberChooserView(Context context, DateRangePickerController controller) {
         super(context);
         mContext = context;
         mController = controller;

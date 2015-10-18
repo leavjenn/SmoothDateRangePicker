@@ -9,20 +9,25 @@
         android:id="@+id/btn_date_range_picker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Range picker" />
+        android:text="Date range picker"
+        android:layout_margin="16dp"
+        android:layout_gravity="center_horizontal" />
 
     <TextView
         android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="show date range"
-        />
+        android:layout_margin="8dp"
+        android:text="Selected date range placeholder"
+        android:layout_gravity="center_horizontal" />
 
 
     <Button
         android:id="@+id/btn_date_picker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date picker" />
+        android:layout_margin="16dp"
+        android:text="Date picker"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>

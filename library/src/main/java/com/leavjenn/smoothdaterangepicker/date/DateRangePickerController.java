@@ -21,15 +21,17 @@ import java.util.Calendar;
 /**
  * Controller class to communicate among the various components of the date picker dialog.
  */
-public interface DatePickerController {
+public interface DateRangePickerController {
 
     void onYearSelected(int year);
 
     void onDayOfMonthSelected(int year, int month, int day);
 
-    void registerOnDateChangedListener(DatePickerDialog.OnDateChangedListener listener);
+    void onDurationChanged(int duration);
 
-    void unregisterOnDateChangedListener(DatePickerDialog.OnDateChangedListener listener);
+    void registerOnDateChangedListener(DateRangePickerDialog.OnDateChangedListener listener);
+
+    void unregisterOnDateChangedListener(DateRangePickerDialog.OnDateChangedListener listener);
 
     MonthAdapter.CalendarDay getSelectedDay();
 

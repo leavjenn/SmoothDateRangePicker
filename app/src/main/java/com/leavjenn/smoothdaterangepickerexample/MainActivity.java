@@ -8,12 +8,12 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
-import com.leavjenn.smoothdaterangepicker.date.RangePickerDialog;
+import com.leavjenn.smoothdaterangepicker.date.DateRangePickerDialog;
 
 import java.util.Calendar;
 
 
-public class MainActivity extends AppCompatActivity implements RangePickerDialog.OnDateSetListener {
+public class MainActivity extends AppCompatActivity implements DateRangePickerDialog.OnDateSetListener {
     private TextView tvDate;
 
     @Override
@@ -25,15 +25,9 @@ public class MainActivity extends AppCompatActivity implements RangePickerDialog
         btnDateRange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar now = Calendar.getInstance();
-//                DatePickerDialog dpd = DatePickerDialog.newInstance(
-                RangePickerDialog dpd = RangePickerDialog.newInstance(
-                        MainActivity.this,
-                        now.get(Calendar.YEAR),
-                        now.get(Calendar.MONTH),
-                        now.get(Calendar.DAY_OF_MONTH)
-                );
-                dpd.show(getFragmentManager(), "Datepickerdialog");
+                DateRangePickerDialog dateRangePickerDialog =
+                        DateRangePickerDialog.newInstance(MainActivity.this);
+                dateRangePickerDialog.show(getFragmentManager(), "Datepickerdialog");
             }
         });
 
@@ -59,10 +53,10 @@ public class MainActivity extends AppCompatActivity implements RangePickerDialog
     }
 
     @Override
-    public void onDateSet(RangePickerDialog view, int year, int monthOfYear, int dayOfMonth,
+    public void onDateSet(DateRangePickerDialog view, int yearStart, int monthOfYearStart, int dayOfMonthStart,
                           int yearEnd, int monthOfYearEnd, int dayOfMonthEnd) {
-        String date = "You picked the following date: From- "
-                + dayOfMonth + "/" + (++monthOfYear) + "/" + year +
+        String date = "You picked the following date: \n" +
+                "From " + dayOfMonthStart + "/" + (++monthOfYearStart) + "/" + yearStart +
                 " To " + dayOfMonthEnd + "/" + (++monthOfYearEnd) + "/" + yearEnd;
         tvDate.setText(date);
     }

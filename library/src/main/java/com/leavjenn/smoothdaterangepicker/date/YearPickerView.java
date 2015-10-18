@@ -37,10 +37,10 @@ import java.util.List;
 /**
  * Displays a selectable list of years.
  */
-public class YearPickerView extends ListView implements OnItemClickListener, DatePickerDialog.OnDateChangedListener {
+public class YearPickerView extends ListView implements OnItemClickListener, DateRangePickerDialog.OnDateChangedListener {
     private static final String TAG = "YearPickerView";
 
-    private final DatePickerController mController;
+    private final DateRangePickerController mController;
     private YearAdapter mAdapter;
     private int mViewSize;
     private int mChildSize;
@@ -50,7 +50,7 @@ public class YearPickerView extends ListView implements OnItemClickListener, Dat
     /**
      * @param context
      */
-    public YearPickerView(Context context, DatePickerController controller) {
+    public YearPickerView(Context context, DateRangePickerController controller) {
         super(context);
         mController = controller;
         mController.registerOnDateChangedListener(this);

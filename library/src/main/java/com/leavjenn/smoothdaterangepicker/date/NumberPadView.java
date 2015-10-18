@@ -18,13 +18,13 @@ public class NumberPadView extends View {
 
     private Paint numPaint;
     private int mNumberColor;
-    RangePickerController mController;
+    DateRangePickerController mController;
 
     public NumberPadView(Context context) {
         super(context);
     }
 
-    public NumberPadView(Context context, RangePickerController controller) {
+    public NumberPadView(Context context, DateRangePickerController controller) {
         super(context);
         mController = controller;
         Resources res = context.getResources();

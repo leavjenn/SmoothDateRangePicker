@@ -34,7 +34,7 @@ public abstract class MonthAdapter extends BaseAdapter implements MonthView.OnDa
     private static final String TAG = "SimpleMonthAdapter";
 
     private final Context mContext;
-    protected final DatePickerController mController;
+    protected final DateRangePickerController mController;
 
     private CalendarDay mSelectedDay;
 
@@ -106,7 +106,7 @@ public abstract class MonthAdapter extends BaseAdapter implements MonthView.OnDa
     }
 
     public MonthAdapter(Context context,
-            DatePickerController controller) {
+            DateRangePickerController controller) {
         mContext = context;
         mController = controller;
         init();

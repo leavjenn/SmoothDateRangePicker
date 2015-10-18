@@ -119,7 +119,7 @@ public abstract class MonthView extends View {
     // used for scaling to the device density
     protected static float mScale = 0;
 
-    protected DatePickerController mController;
+    protected DateRangePickerController mController;
 
     // affects the padding on the sides of this view
     protected int mEdgePadding = 0;
@@ -190,7 +190,7 @@ public abstract class MonthView extends View {
         this(context, null, null);
     }
 
-    public MonthView(Context context, AttributeSet attr, DatePickerController controller) {
+    public MonthView(Context context, AttributeSet attr, DateRangePickerController controller) {
         super(context, attr);
         mController = controller;
         Resources res = context.getResources();
@@ -241,7 +241,7 @@ public abstract class MonthView extends View {
         initView();
     }
 
-    public void setDatePickerController(DatePickerController controller) {
+    public void setDatePickerController(DateRangePickerController controller) {
         mController = controller;
     }
 
