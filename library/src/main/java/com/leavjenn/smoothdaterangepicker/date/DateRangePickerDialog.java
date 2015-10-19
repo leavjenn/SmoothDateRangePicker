@@ -551,6 +551,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
 //                mMinDate = null;
                 mMinSelectableDate = mMinDate;
                 mYearPickerView.onDateChanged();
+                mYearPickerView.refreshYearAdapter();
 
                 CharSequence yearString = YEAR_FORMAT.format(millis);
                 mAnimator.setContentDescription(mYearPickerDescription + ": " + yearString);
