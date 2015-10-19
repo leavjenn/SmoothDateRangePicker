@@ -67,12 +67,12 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
     private static final int YEAR_VIEW_END = 3;
     private static final int DURATION_VIEW = 4;
 
-    private static final String KEY_SELECTED_YEAR = "year";
-    private static final String KEY_SELECTED_YEAR_END = "year_end";
-    private static final String KEY_SELECTED_MONTH = "month";
-    private static final String KEY_SELECTED_MONTH_END = "month_end";
-    private static final String KEY_SELECTED_DAY = "day";
-    private static final String KEY_SELECTED_DAY_END = "day_end";
+    private static final String KEY_SELECTED_YEAR = "selected_year";
+    private static final String KEY_SELECTED_YEAR_END = "selected_year_end";
+    private static final String KEY_SELECTED_MONTH = "selected_month";
+    private static final String KEY_SELECTED_MONTH_END = "selected_month_end";
+    private static final String KEY_SELECTED_DAY = "selected_day";
+    private static final String KEY_SELECTED_DAY_END = "selected_day_end";
     private static final String KEY_DURATION_DAYS = "duration_days";
     private static final String KEY_LIST_POSITION = "list_position";
     private static final String KEY_LIST_POSITION_END = "list_position_end";
