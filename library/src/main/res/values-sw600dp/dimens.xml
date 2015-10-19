@@ -21,6 +21,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <dimen name="mdtp_date_picker_component_width">400dp</dimen>
+    <dimen name="mdtp_date_picker_component_width_half">194dp</dimen>
     <dimen name="mdtp_date_picker_view_animator_height">400dp</dimen>
     <dimen name="mdtp_selected_calendar_layout_height">360dp</dimen>
     <dimen name="mdtp_date_picker_header_height">45dp</dimen>
