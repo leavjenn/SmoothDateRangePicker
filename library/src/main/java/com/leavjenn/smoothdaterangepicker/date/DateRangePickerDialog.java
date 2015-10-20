@@ -530,10 +530,6 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
                 Utils.tryAccessibilityAnnounce(mAnimator, mSelectDay);
                 break;
             case MONTH_AND_DAY_VIEW_END:
-                //set min date of end day to the selected day of start day
-                if (mCalendar.after(mCalendarEnd)) {
-                    mCalendarEnd.setTime(mCalendar.getTime());
-                }
                 //TODO temp change minDate to start day
 //                mMinDate = mCalendar;
                 mMinSelectableDate = mCalendar;
@@ -904,14 +900,32 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
         updatePickers();
         if (mCurrentView == YEAR_VIEW) {
             adjustDayInMonthIfNeeded(mCalendar);
-            mCalendar.set(Calendar.YEAR, year);
+            //make sure start date always after min date and before max date
+            if (getMinDate() != null && mCalendar.before(getMinDate())) {
+                mCalendar.setTime(getMinDate().getTime());
+            } else if (getMaxDate() != null && mCalendar.after(getMaxDate())) {
+                mCalendar.setTime(getMaxDate().getTime());
+            } else {
+                mCalendar.set(Calendar.YEAR, year);
+            }
             if (mCalendar.after(mCalendarEnd)) {
+                //make sure end date always after start date
                 mCalendarEnd.setTime(mCalendar.getTime());
             }
             setCurrentView(MONTH_AND_DAY_VIEW);
         } else if (mCurrentView == YEAR_VIEW_END) {
             adjustDayInMonthIfNeeded(mCalendarEnd);
-            mCalendarEnd.set(Calendar.YEAR, year);
+            //make sure end date always after min date and before max date
+            if (getMinDate() != null && mCalendarEnd.before(getMinDate())) {
+                mCalendarEnd.setTime(getMinDate().getTime());
+            } else if (getMaxDate() != null && mCalendarEnd.after(getMaxDate())) {
+                mCalendarEnd.setTime(getMaxDate().getTime());
+            } else if (mCalendar.after(mCalendarEnd)) {
+                //make sure end date always after start date
+                mCalendarEnd.setTime(mCalendar.getTime());
+            } else {
+                mCalendarEnd.set(Calendar.YEAR, year);
+            }
             setCurrentView(MONTH_AND_DAY_VIEW_END);
         }
         updateHighlightDays();
