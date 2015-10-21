@@ -966,13 +966,18 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
                 limitDay.set(2100, 11, 31);
                 limitDuration = Utils.daysBetween(mCalendar, limitDay);
             }
-            mDuration = mDuration * 10 + num > limitDuration ? limitDuration : mDuration * 10 + num;
+            if (mDurationEditText.hasSelection()) {
+                mDuration = num;
+            } else {
+                mDuration = mDuration * 10 + num > limitDuration ? limitDuration : mDuration * 10 + num;
+            }
         } else if (num == -1) { //del
             mDuration = (mDuration > 0) ? mDuration / 10 : mDuration;
         } else if (num == -2) { // delete all
             mDuration = 0;
         }
         mDurationEditText.setText(String.valueOf(mDuration));
+        mDurationEditText.setSelection(String.valueOf(mDuration).length());
         if (mMonthAndDayView.isSelected()) {
             mCalendar.setTime(mCalendarEnd.getTime());
             mCalendar.add(Calendar.DATE, -mDuration);
