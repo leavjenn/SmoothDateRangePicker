@@ -71,7 +71,7 @@ public class YearPickerView extends ListView implements OnItemClickListener, Dat
 
     private void init(Context context) {
         ArrayList<String> years = new ArrayList<String>();
-        for (int year = mController.getMinYear(); year <= mController.getMaxYear(); year++) {
+        for (int year = mController.getMinSelectableYear(); year <= mController.getMaxYear(); year++) {
             years.add(String.format("%d", year));
         }
         mAdapter = new YearAdapter(context, R.layout.mdtp_year_label_text_view, years);
@@ -153,7 +153,7 @@ public class YearPickerView extends ListView implements OnItemClickListener, Dat
     @Override
     public void onDateChanged() {
         mAdapter.notifyDataSetChanged();
-        postSetSelectionCentered(mController.getSelectedDay().year - mController.getMinYear());
+        postSetSelectionCentered(mController.getSelectedDay().year - mController.getMinSelectableYear());
     }
 
     @Override
@@ -167,7 +167,7 @@ public class YearPickerView extends ListView implements OnItemClickListener, Dat
 
     public void refreshYearAdapter(){
         mAdapter.clear();
-        for (int year = mController.getMinYear(); year <= mController.getMaxYear(); year++) {
+        for (int year = mController.getMinSelectableYear(); year <= mController.getMaxYear(); year++) {
             mAdapter.add(String.format("%d", year));
         }
         mAdapter.notifyDataSetChanged();

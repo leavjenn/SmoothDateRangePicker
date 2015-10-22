@@ -140,7 +140,7 @@ public abstract class MonthAdapter extends BaseAdapter implements MonthView.OnDa
 
     @Override
     public int getCount() {
-        return ((mController.getMaxYear() - mController.getMinYear()) + 1) * MONTHS_IN_YEAR;
+        return ((mController.getMaxYear() - mController.getMinSelectableYear()) + 1) * MONTHS_IN_YEAR;
     }
 
     @Override
@@ -186,7 +186,7 @@ public abstract class MonthAdapter extends BaseAdapter implements MonthView.OnDa
         drawingParams.clear();
 
         final int month = position % MONTHS_IN_YEAR;
-        final int year = position / MONTHS_IN_YEAR + mController.getMinYear();
+        final int year = position / MONTHS_IN_YEAR + mController.getMinSelectableYear();
 
         int selectedDay = -1;
         if (isSelectedDayInMonth(year, month)) {

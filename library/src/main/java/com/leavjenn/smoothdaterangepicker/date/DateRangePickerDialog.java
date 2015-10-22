@@ -1006,8 +1006,14 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
     public int getMinYear() {
         if (selectableDays != null) return selectableDays[0].get(Calendar.YEAR);
         // Ensure no years can be selected outside of the given minimum date
-//        return mMinDate != null && mMinDate.get(Calendar.YEAR) > mMinYear ?
-//                mMinDate.get(Calendar.YEAR) : mMinYear;
+        return mMinDate != null && mMinDate.get(Calendar.YEAR) > mMinYear ?
+                mMinDate.get(Calendar.YEAR) : mMinYear;
+    }
+
+    @Override
+    public int getMinSelectableYear() {
+        if (selectableDays != null) return selectableDays[0].get(Calendar.YEAR);
+        // Ensure no years can be selected outside of the given minimum date
         return mMinSelectableDate != null && mMinSelectableDate.get(Calendar.YEAR) > mMinYear ?
                 mMinSelectableDate.get(Calendar.YEAR) : mMinYear;
     }
