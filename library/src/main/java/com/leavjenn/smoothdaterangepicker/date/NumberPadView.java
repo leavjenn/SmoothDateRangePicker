@@ -1,75 +1,113 @@
 package com.leavjenn.smoothdaterangepicker.date;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TableLayout;
 
 import com.leavjenn.smoothdaterangepicker.R;
 
-public class NumberPadView extends View {
-    private static int NUM_COLUMN = 3;
-    private static int NUMBER_TEXT_SIZE;
-    private static final int SELECTED_CIRCLE_ALPHA = 255;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-
-    private Paint numPaint;
-    private int mNumberColor;
+public class NumberPadView extends TableLayout implements View.OnClickListener {
+    Context mContext;
     DateRangePickerController mController;
-
-    public NumberPadView(Context context) {
-        super(context);
-    }
+    Button btnNum0, btnNum1, btnNum2, btnNum3, btnNum4, btnNum5,
+            btnNum6, btnNum7, btnNum8, btnNum9, btnDel;
 
     public NumberPadView(Context context, DateRangePickerController controller) {
         super(context);
+        mContext = context;
         mController = controller;
-        Resources res = context.getResources();
-        mNumberColor = res.getColor(R.color.mdtp_date_picker_text_normal);
-        NUMBER_TEXT_SIZE = res.getDimensionPixelSize(R.dimen.mdtp_selected_date_year_size);
-        initView();
+        init();
     }
 
     public NumberPadView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mContext = context;
+        init();
     }
 
-    public NumberPadView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+    private void init() {
+        View view = LayoutInflater.from(mContext).inflate(R.layout.sdrp_number_pad, this);
+//        int[] layoutIds = {R.id.btn_zero, R.id.btn_one, R.id.btn_two, R.id.btn_three,
+//                R.id.btn_four, R.id.btn_five, R.id.btn_six, R.id.btn_seven,
+//                R.id.btn_eight, R.id.btn_nine, R.id.btn_delete};
+        btnNum0 = (Button) view.findViewById(R.id.btn_zero);
+        btnNum1 = (Button) view.findViewById(R.id.btn_one);
+        btnNum2 = (Button) view.findViewById(R.id.btn_two);
+        btnNum3 = (Button) view.findViewById(R.id.btn_three);
+        btnNum4 = (Button) view.findViewById(R.id.btn_four);
+        btnNum5 = (Button) view.findViewById(R.id.btn_five);
+        btnNum6 = (Button) view.findViewById(R.id.btn_six);
+        btnNum7 = (Button) view.findViewById(R.id.btn_seven);
+        btnNum8 = (Button) view.findViewById(R.id.btn_eight);
+        btnNum9 = (Button) view.findViewById(R.id.btn_nine);
+        btnDel = (Button) view.findViewById(R.id.btn_delete);
+        ArrayList<Button> buttons = new ArrayList<>(Arrays.asList(btnNum0, btnNum1, btnNum2,
+                btnNum3, btnNum4, btnNum5, btnNum6, btnNum7, btnNum8, btnNum9, btnDel));
+//        initMultiBtns(buttons, layoutIds, view);
+        setMultiBtnsOnClickListener(buttons);
+        btnDel.setOnLongClickListener(new OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                mController.onDurationChanged(-2);
+                return true;
+            }
+        });
     }
 
-    void initView() {
-        numPaint = new Paint();
-        numPaint.setAntiAlias(true);
-        numPaint.setTextSize(NUMBER_TEXT_SIZE);
-        numPaint.setColor(mNumberColor);
-        numPaint.setStyle(Paint.Style.FILL);
-        numPaint.setTextAlign(Paint.Align.CENTER);
+//    private void initMultiBtns(ArrayList<Button> buttons, int[] layoutIds, View view) {
+//        for (int i = 0; i < buttons.size(); i++) {
+//            buttons.get(i) = (Button) view.findViewById(layoutIds[i]);
+//        }
+//    }
+
+    private void setMultiBtnsOnClickListener(ArrayList<Button> buttons) {
+        for (Button btn : buttons) {
+            btn.setOnClickListener(this);
+        }
     }
 
     @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        for (int num = 0; num < 9; num++) {
-            canvas.drawText(String.valueOf(num + 1), 96 * (num % NUM_COLUMN + 1),
-                    96 * (num / NUM_COLUMN + 1), numPaint);
+    public void onClick(View v) {
+        int i = v.getId();
+        if (i == R.id.btn_zero) {
+            mController.onDurationChanged(0);
+
+        } else if (i == R.id.btn_one) {
+            mController.onDurationChanged(1);
+
+        } else if (i == R.id.btn_two) {
+            mController.onDurationChanged(2);
+
+        } else if (i == R.id.btn_three) {
+            mController.onDurationChanged(3);
+
+        } else if (i == R.id.btn_four) {
+            mController.onDurationChanged(4);
+
+        } else if (i == R.id.btn_five) {
+            mController.onDurationChanged(5);
+
+        } else if (i == R.id.btn_six) {
+            mController.onDurationChanged(6);
+
+        } else if (i == R.id.btn_seven) {
+            mController.onDurationChanged(7);
+
+        } else if (i == R.id.btn_eight) {
+            mController.onDurationChanged(8);
+
+        } else if (i == R.id.btn_nine) {
+            mController.onDurationChanged(9);
+
+        } else if (i == R.id.btn_delete) {
+            mController.onDurationChanged(-1);
+
         }
-        canvas.drawText("0", 96, 96 * 4, numPaint);
-        canvas.drawText("C", 96 * 3, 96 * 4, numPaint);
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()){
-            case MotionEvent.ACTION_DOWN:
-
-            case MotionEvent.ACTION_UP:
-
-                break;
-        }
-        return true;
     }
 }
