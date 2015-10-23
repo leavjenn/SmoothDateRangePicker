@@ -134,7 +134,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
     private TextView mDurationDayTextView;
     private TextView mDurationArrow;
     private TextView mDurationArrowEnd;
-    private NumberChooserView mNumberChooserView;
+    private NumberPadView mNumberPadView;
 
     private int mCurrentView = UNINITIALIZED;
 
@@ -368,7 +368,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
         mYearPickerView = new YearPickerView(activity, this);
         mDayPickerViewEnd = new SimpleDayPickerView(activity, this);
         mYearPickerViewEnd = new YearPickerView(activity, this);
-        mNumberChooserView = new NumberChooserView(activity, this);
+        mNumberPadView = new NumberPadView(activity, this);
 
 
         Resources res = getResources();
@@ -387,7 +387,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
         mAnimator.addView(mYearPickerView);
         mAnimator.addView(mDayPickerViewEnd);
         mAnimator.addView(mYearPickerViewEnd);
-        mAnimator.addView(mNumberChooserView);
+        mAnimator.addView(mNumberPadView);
         mAnimator.setDateMillis(mCalendar.getTimeInMillis());
         Animation animation = new AlphaAnimation(0.0f, 1.0f);
         animation.setDuration(ANIMATION_DURATION);
@@ -1006,8 +1006,14 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
     public int getMinYear() {
         if (selectableDays != null) return selectableDays[0].get(Calendar.YEAR);
         // Ensure no years can be selected outside of the given minimum date
-//        return mMinDate != null && mMinDate.get(Calendar.YEAR) > mMinYear ?
-//                mMinDate.get(Calendar.YEAR) : mMinYear;
+        return mMinDate != null && mMinDate.get(Calendar.YEAR) > mMinYear ?
+                mMinDate.get(Calendar.YEAR) : mMinYear;
+    }
+
+    @Override
+    public int getMinSelectableYear() {
+        if (selectableDays != null) return selectableDays[0].get(Calendar.YEAR);
+        // Ensure no years can be selected outside of the given minimum date
         return mMinSelectableDate != null && mMinSelectableDate.get(Calendar.YEAR) > mMinYear ?
                 mMinSelectableDate.get(Calendar.YEAR) : mMinYear;
     }

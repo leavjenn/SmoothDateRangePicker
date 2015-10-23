@@ -11,16 +11,18 @@ import android.widget.TextView;
 import com.leavjenn.smoothdaterangepicker.date.DateRangePickerDialog;
 
 import java.util.Calendar;
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity implements DateRangePickerDialog.OnDateSetListener {
-    private TextView tvDate;
+    private TextView tvDate, tvDate1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tvDate = (TextView) findViewById(R.id.tv_date);
+        tvDate1 = (TextView) findViewById(R.id.tv_date1);
         Button btnDateRange = (Button) findViewById(R.id.btn_date_range_picker);
         btnDateRange.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,10 +46,14 @@ public class MainActivity extends AppCompatActivity implements DateRangePickerDi
                         new android.app.DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-
+                                tvDate1.setText((year + "/" + monthOfYear + "/" + dayOfMonth));
                             }
                         }, year, month, day);
+                Calendar cc = Calendar.getInstance();
+                cc.set(2014, 4, 22);
+                datePickerDialog.getDatePicker().setMinDate(cc.getTimeInMillis());
                 datePickerDialog.show();
+
             }
         });
     }

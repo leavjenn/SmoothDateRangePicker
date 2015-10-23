@@ -45,6 +45,8 @@ public interface DateRangePickerController {
 
     int getMinYear();
 
+    int getMinSelectableYear();
+
     int getMaxYear();
 
     Calendar getMinDate();
