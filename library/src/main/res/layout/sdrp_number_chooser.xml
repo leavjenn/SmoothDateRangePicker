@@ -5,16 +5,14 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:layout_marginTop="20dp"
-    android:stretchColumns="1"
+    android:stretchColumns="*"
     android:shrinkColumns="1"
     android:paddingBottom="10dp"
     android:paddingLeft="4dp"
     android:paddingRight="6dp">
 
     <TableRow
-        android:layout_height="0dp"
-        android:layout_width="0dp"
-        android:layout_weight="1"
+        style="@style/PadRowStyle"
         >
 
         <Button
@@ -37,9 +35,7 @@
     </TableRow>
 
     <TableRow
-        android:layout_height="0dp"
-        android:layout_width="0dp"
-        android:layout_weight="1"
+        style="@style/PadRowStyle"
         >
 
         <Button
@@ -62,9 +58,7 @@
     </TableRow>
 
     <TableRow
-        android:layout_height="0dp"
-        android:layout_width="0dp"
-        android:layout_weight="1"
+        style="@style/PadRowStyle"
         >
 
         <Button
@@ -87,9 +81,7 @@
     </TableRow>
 
     <TableRow
-        android:layout_height="0dp"
-        android:layout_width="0dp"
-        android:layout_weight="1"
+        style="@style/PadRowStyle"
         >
 
         <Button
@@ -99,10 +91,14 @@
             android:text="0" />
 
         <Button
+            android:clickable="false"
+            style="@style/PadButtonStyle" />
+
+
+        <Button
             android:id="@+id/btn_delete"
             style="@style/PadButtonStyle"
             android:contentDescription="delete"
-            android:text="DEL"
-            android:layout_column="2" />
+            android:text="DEL"/>
     </TableRow>
 </TableLayout>
