@@ -27,11 +27,6 @@
         android:background="@color/mdtp_accent_color"
         android:orientation="horizontal">
 
-        <!--<LinearLayout-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="vertical">-->
-
         <include layout="@layout/sdrp_date_picker_selected_date" />
 
         <View
@@ -39,16 +34,7 @@
             android:layout_width="12dp"
             android:layout_height="2dp"
             android:layout_gravity="center"
-            android:background="@color/mdtp_accent_color_focused"
-            />
-
-        <!--<include layout="@layout/mdtp_date_picker_view_animator" />-->
-        <!--</LinearLayout>-->
-
-        <!--<LinearLayout-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="vertical">-->
+            android:background="@color/mdtp_accent_color_focused" />
 
         <include layout="@layout/sdrp_date_picker_selected_date_end" />
 
@@ -57,7 +43,6 @@
     <include layout="@layout/sdrp_date_picker_duration" />
 
     <include layout="@layout/mdtp_date_picker_view_animator" />
-    <!--</LinearLayout>-->
 
     <include layout="@layout/mdtp_done_button" />
 </LinearLayout>

@@ -433,10 +433,6 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
             }
         }
         if (mAccentColor != -1) {
-//            if (mDayOfWeekView != null)
-//                mDayOfWeekView.setBackgroundColor(Utils.darkenColor(mAccentColor));
-//            if (mDayOfWeekViewEnd != null)
-//                mDayOfWeekViewEnd.setBackgroundColor(Utils.darkenColor(mAccentColor));
             if (mDayOfWeekView != null)
                 mDayOfWeekView.setBackgroundColor(mAccentColor);
             if (mDayOfWeekViewEnd != null)
@@ -522,8 +518,6 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
 
         switch (viewIndex) {
             case MONTH_AND_DAY_VIEW:
-                //TODO temp change minDate to null
-//                mMinDate = null;
                 mMinSelectableDate = mMinDate;
                 mDayPickerView.onDateChanged();
 
@@ -533,21 +527,15 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
                 Utils.tryAccessibilityAnnounce(mAnimator, mSelectDay);
                 break;
             case MONTH_AND_DAY_VIEW_END:
-                //TODO temp change minDate to start day
-//                mMinDate = mCalendar;
                 mMinSelectableDate = mCalendar;
                 mDayPickerViewEnd.onDateChanged();
 
                 flags = DateUtils.FORMAT_SHOW_DATE;
-//                dayString = DateUtils.formatDateTime(getActivity(), millis, flags);
                 String dayStringEnd = DateUtils.formatDateTime(getActivity(), millisEnd, flags);
-//                mAnimator.setContentDescription(mDayPickerDescription + ": " + dayString);
                 mAnimator.setContentDescription(mDayPickerDescription + ": " + dayStringEnd);
                 Utils.tryAccessibilityAnnounce(mAnimator, mSelectDay);
                 break;
             case YEAR_VIEW:
-                //TODO temp change mMinDate to null
-//                mMinDate = null;
                 mMinSelectableDate = mMinDate;
                 mYearPickerView.onDateChanged();
                 mYearPickerView.refreshYearAdapter();
@@ -557,15 +545,11 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
                 Utils.tryAccessibilityAnnounce(mAnimator, mSelectYear);
                 break;
             case YEAR_VIEW_END:
-                //TODO temp change minDate to start day
-//                mMinDate = mCalendar;
                 mMinSelectableDate = mCalendar;
                 mYearPickerViewEnd.onDateChanged();
                 mYearPickerViewEnd.refreshYearAdapter();
 
-//                yearString = YEAR_FORMAT.format(millis);
                 CharSequence yearStringEnd = YEAR_FORMAT.format(millisEnd);
-//                mAnimator.setContentDescription(mYearPickerDescription + ": " + yearString);
                 mAnimator.setContentDescription(mYearPickerDescription + ": " + yearStringEnd);
                 Utils.tryAccessibilityAnnounce(mAnimator, mSelectYear);
                 break;
@@ -647,7 +631,6 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
             String fullDateText = DateUtils.formatDateTime(getActivity(), millis, flags);
 //            String fullDateTextEnd = DateUtils.formatDateTime(getActivity(), millisEnd, flags);
             Utils.tryAccessibilityAnnounce(mAnimator, fullDateText);
-//            Utils.tryAccessibilityAnnounce(mAnimator, fullDateTextEnd);
         }
     }
 
