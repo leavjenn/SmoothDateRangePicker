@@ -21,6 +21,7 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.res.Resources;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.InputType;
@@ -445,6 +446,8 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
             view.findViewById(R.id.day_picker_selected_date_layout).setBackgroundColor(mAccentColor);
             view.findViewById(R.id.day_picker_selected_date_layout_end).setBackgroundColor(mAccentColor);
             mDurationView.setBackgroundColor(mAccentColor);
+            mDurationEditText.setHighlightColor(Utils.darkenColor(mAccentColor));
+            mDurationEditText.getBackground().setColorFilter(Utils.darkenColor(mAccentColor), PorterDuff.Mode.SRC_ATOP);
             okButton.setTextColor(mAccentColor);
             cancelButton.setTextColor(mAccentColor);
             mYearPickerView.setAccentColor(mAccentColor);

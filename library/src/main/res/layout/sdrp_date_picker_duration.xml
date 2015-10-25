@@ -40,6 +40,7 @@
         android:id="@+id/date_picker_duration_days_et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textCursorDrawable="@null"
         android:visibility="gone"
         android:textColor="@color/mdtp_date_picker_selector"
         android:textSize="20sp" />
