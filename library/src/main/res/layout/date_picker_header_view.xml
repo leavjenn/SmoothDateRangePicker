@@ -23,6 +23,3 @@
     android:textColor="@color/mdtp_accent_color_focused"
     android:textSize="@dimen/mdtp_date_picker_header_text_size"
     android:importantForAccessibility="no" />
-
-    <!--android:textColor="@color/mdtp_white"-->
-    <!--android:background="@color/mdtp_calendar_header"-->

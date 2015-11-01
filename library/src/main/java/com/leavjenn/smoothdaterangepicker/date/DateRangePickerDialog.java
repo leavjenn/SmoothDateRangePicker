@@ -104,7 +104,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
 
     private Calendar mCalendar = Calendar.getInstance();
     private Calendar mCalendarEnd = Calendar.getInstance();
-    private OnDateSetListener mCallBack;
+    private OnDateRangeSetListener mCallBack;
     private HashSet<OnDateChangedListener> mListeners = new HashSet<>();
     private DialogInterface.OnCancelListener mOnCancelListener;
     private DialogInterface.OnDismissListener mOnDismissListener;
@@ -169,7 +169,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
     /**
      * The callback used to indicate the user is done filling in the date.
      */
-    public interface OnDateSetListener {
+    public interface OnDateRangeSetListener {
 
         /**
          * @param view             The view associated with this listener.
@@ -182,8 +182,8 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
          *                         with {@link Calendar}.
          * @param dayOfMonthEnd    The end day of the month that was set.
          */
-        void onDateSet(DateRangePickerDialog view, int yearStart, int monthOfYearStart, int dayOfMonthStart,
-                       int yearEnd, int monthOfYearEnd, int dayOfMonthEnd);
+        void onDateRangeSet(DateRangePickerDialog view, int yearStart, int monthOfYearStart,
+                            int dayOfMonthStart, int yearEnd, int monthOfYearEnd, int dayOfMonthEnd);
     }
 
     /**
@@ -203,7 +203,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
      * @param monthOfYear The initial month of the dialog.
      * @param dayOfMonth  The initial day of the dialog.
      */
-    public static DateRangePickerDialog newInstance(OnDateSetListener callBack, int year,
+    public static DateRangePickerDialog newInstance(OnDateRangeSetListener callBack, int year,
                                                     int monthOfYear,
                                                     int dayOfMonth) {
         DateRangePickerDialog ret = new DateRangePickerDialog();
@@ -215,7 +215,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
      * @param callBack How the parent is notified that the date is set.
      *                 the initial date is set to today
      */
-    public static DateRangePickerDialog newInstance(OnDateSetListener callBack) {
+    public static DateRangePickerDialog newInstance(OnDateRangeSetListener callBack) {
         DateRangePickerDialog ret = new DateRangePickerDialog();
         Calendar todayCal = Calendar.getInstance();
         ret.initialize(callBack, todayCal.get(Calendar.YEAR), todayCal.get(Calendar.MONTH),
@@ -223,7 +223,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
         return ret;
     }
 
-    public void initialize(OnDateSetListener callBack, int year, int monthOfYear, int dayOfMonth) {
+    public void initialize(OnDateRangeSetListener callBack, int year, int monthOfYear, int dayOfMonth) {
         mCallBack = callBack;
         mCalendar.set(Calendar.YEAR, year);
         mCalendar.set(Calendar.MONTH, monthOfYear);
@@ -299,7 +299,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
                              Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView: ");
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        View view = inflater.inflate(R.layout.sdrp_date_picker_dialog, null);
+        View view = inflater.inflate(R.layout.date_picker_dialog, null);
 
         mDayOfWeekView = (TextView) view.findViewById(R.id.date_picker_header);
         mDayOfWeekViewEnd = (TextView) view.findViewById(R.id.date_picker_header_end);
@@ -404,7 +404,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
             public void onClick(View v) {
                 tryVibrate();
                 if (mCallBack != null) {
-                    mCallBack.onDateSet(DateRangePickerDialog.this,
+                    mCallBack.onDateRangeSet(DateRangePickerDialog.this,
                             mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH),
                             mCalendar.get(Calendar.DAY_OF_MONTH), mCalendarEnd.get(Calendar.YEAR),
                             mCalendarEnd.get(Calendar.MONTH), mCalendarEnd.get(Calendar.DAY_OF_MONTH));
@@ -833,7 +833,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
 
 
     @SuppressWarnings("unused")
-    public void setOnDateSetListener(OnDateSetListener listener) {
+    public void setOnDateSetListener(OnDateRangeSetListener listener) {
         mCallBack = listener;
     }
 

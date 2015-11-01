@@ -32,7 +32,7 @@
         <!--android:layout_height="wrap_content"-->
         <!--android:orientation="vertical">-->
 
-        <include layout="@layout/sdrp_date_picker_selected_date" />
+        <include layout="@layout/date_picker_selected_date" />
 
         <View
             android:id="@+id/hyphen"
@@ -42,7 +42,7 @@
             android:background="@color/mdtp_accent_color_focused"
             />
 
-        <!--<include layout="@layout/mdtp_date_picker_view_animator" />-->
+        <!--<include layout="@layout/date_picker_view_animator" />-->
         <!--</LinearLayout>-->
 
         <!--<LinearLayout-->
@@ -50,14 +50,14 @@
         <!--android:layout_height="wrap_content"-->
         <!--android:orientation="vertical">-->
 
-        <include layout="@layout/sdrp_date_picker_selected_date_end" />
+        <include layout="@layout/date_picker_selected_date_end" />
 
     </LinearLayout>
 
-    <include layout="@layout/sdrp_date_picker_duration" />
+    <include layout="@layout/date_picker_duration" />
 
-    <include layout="@layout/mdtp_date_picker_view_animator" />
+    <include layout="@layout/date_picker_view_animator" />
     <!--</LinearLayout>-->
 
-    <include layout="@layout/mdtp_done_button" />
+    <include layout="@layout/date_picker_done_button" />
 </LinearLayout>

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
      Copyright (C) 2013 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,24 +14,35 @@
      limitations under the License.
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="@dimen/mdtp_date_picker_component_width"
     android:layout_height="wrap_content"
     android:background="@color/mdtp_date_picker_view_animator"
     android:gravity="center"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/layout_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:background="@color/mdtp_accent_color"
+        android:orientation="horizontal">
 
-        <include layout="@layout/mdtp_date_picker_header_view" />
+        <include layout="@layout/date_picker_selected_date" />
 
-        <include layout="@layout/mdtp_date_picker_selected_date" />
+        <View
+            android:id="@+id/hyphen"
+            android:layout_width="12dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:background="@color/mdtp_accent_color_focused" />
 
-        <include layout="@layout/mdtp_date_picker_view_animator" />
+        <include layout="@layout/date_picker_selected_date_end" />
+
     </LinearLayout>
 
-    <include layout="@layout/mdtp_done_button" />
+    <include layout="@layout/date_picker_duration" />
 
+    <include layout="@layout/date_picker_view_animator" />
+
+    <include layout="@layout/date_picker_done_button" />
 </LinearLayout>

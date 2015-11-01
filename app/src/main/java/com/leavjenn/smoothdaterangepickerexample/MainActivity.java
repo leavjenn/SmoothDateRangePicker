@@ -11,10 +11,9 @@ import android.widget.TextView;
 import com.leavjenn.smoothdaterangepicker.date.DateRangePickerDialog;
 
 import java.util.Calendar;
-import java.util.Date;
 
 
-public class MainActivity extends AppCompatActivity implements DateRangePickerDialog.OnDateSetListener {
+public class MainActivity extends AppCompatActivity implements DateRangePickerDialog.OnDateRangeSetListener {
     private TextView tvDate, tvDate1;
 
     @Override
@@ -59,8 +58,8 @@ public class MainActivity extends AppCompatActivity implements DateRangePickerDi
     }
 
     @Override
-    public void onDateSet(DateRangePickerDialog view, int yearStart, int monthOfYearStart, int dayOfMonthStart,
-                          int yearEnd, int monthOfYearEnd, int dayOfMonthEnd) {
+    public void onDateRangeSet(DateRangePickerDialog view, int yearStart, int monthOfYearStart, int dayOfMonthStart,
+                               int yearEnd, int monthOfYearEnd, int dayOfMonthEnd) {
         String date = "You picked the following date: \n" +
                 "From " + dayOfMonthStart + "/" + (++monthOfYearStart) + "/" + yearStart +
                 " To " + dayOfMonthEnd + "/" + (++monthOfYearEnd) + "/" + yearEnd;

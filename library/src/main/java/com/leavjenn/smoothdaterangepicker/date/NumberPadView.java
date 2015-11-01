@@ -32,7 +32,7 @@ public class NumberPadView extends TableLayout implements View.OnClickListener {
     }
 
     private void init() {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.sdrp_number_pad, this);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.number_pad, this);
 //        int[] layoutIds = {R.id.btn_zero, R.id.btn_one, R.id.btn_two, R.id.btn_three,
 //                R.id.btn_four, R.id.btn_five, R.id.btn_six, R.id.btn_seven,
 //                R.id.btn_eight, R.id.btn_nine, R.id.btn_delete};
