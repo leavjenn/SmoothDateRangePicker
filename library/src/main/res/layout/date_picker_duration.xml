@@ -16,8 +16,8 @@
     android:visibility="gone"
     android:text="&lt;"
     android:textSize="20sp"
-    android:paddingRight="24dp"
-    android:paddingLeft="24dp"
+    android:paddingRight="20dp"
+    android:paddingLeft="20dp"
     />
     <TextView
         android:id="@+id/tv_duration"
@@ -57,8 +57,8 @@
         android:id="@+id/arrow_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingRight="24dp"
-        android:paddingLeft="24dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
         android:textColor="@color/mdtp_date_picker_selector"
         android:visibility="gone"
         android:text="&gt;"
