@@ -13,10 +13,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class NumberPadView extends TableLayout implements View.OnClickListener {
-    Context mContext;
-    DateRangePickerController mController;
-    Button btnNum0, btnNum1, btnNum2, btnNum3, btnNum4, btnNum5,
+    private Context mContext;
+    private DateRangePickerController mController;
+    private Button btnNum0, btnNum1, btnNum2, btnNum3, btnNum4, btnNum5,
             btnNum6, btnNum7, btnNum8, btnNum9, btnDel;
+    private int mTextColor;
 
     public NumberPadView(Context context, DateRangePickerController controller) {
         super(context);
@@ -32,10 +33,19 @@ public class NumberPadView extends TableLayout implements View.OnClickListener {
     }
 
     private void init() {
+        boolean darkTheme = mController.isThemeDark();
+        if (darkTheme) {
+            mTextColor = mContext.getResources().getColor(R.color.mdtp_date_picker_text_normal_dark_theme);
+        } else {
+            mTextColor = mContext.getResources().getColor(R.color.mdtp_date_picker_text_normal);
+        }
         View view = LayoutInflater.from(mContext).inflate(R.layout.number_pad, this);
 //        int[] layoutIds = {R.id.btn_zero, R.id.btn_one, R.id.btn_two, R.id.btn_three,
 //                R.id.btn_four, R.id.btn_five, R.id.btn_six, R.id.btn_seven,
 //                R.id.btn_eight, R.id.btn_nine, R.id.btn_delete};
+//        ArrayList<Integer> layoutIds =new ArrayList<>(Arrays.asList(R.id.btn_zero, R.id.btn_one,
+//                R.id.btn_two, R.id.btn_three, R.id.btn_four, R.id.btn_five, R.id.btn_six,
+//                R.id.btn_seven, R.id.btn_eight, R.id.btn_nine, R.id.btn_delete));
         btnNum0 = (Button) view.findViewById(R.id.btn_zero);
         btnNum1 = (Button) view.findViewById(R.id.btn_one);
         btnNum2 = (Button) view.findViewById(R.id.btn_two);
@@ -50,6 +60,7 @@ public class NumberPadView extends TableLayout implements View.OnClickListener {
         ArrayList<Button> buttons = new ArrayList<>(Arrays.asList(btnNum0, btnNum1, btnNum2,
                 btnNum3, btnNum4, btnNum5, btnNum6, btnNum7, btnNum8, btnNum9, btnDel));
 //        initMultiBtns(buttons, layoutIds, view);
+        setMultiButtonsTextColor(buttons);
         setMultiBtnsOnClickListener(buttons);
         btnDel.setOnLongClickListener(new OnLongClickListener() {
             @Override
@@ -60,9 +71,9 @@ public class NumberPadView extends TableLayout implements View.OnClickListener {
         });
     }
 
-//    private void initMultiBtns(ArrayList<Button> buttons, int[] layoutIds, View view) {
+//    private void initMultiBtns(ArrayList<Button> buttons, ArrayList<Integer> layoutIds, View view) {
 //        for (int i = 0; i < buttons.size(); i++) {
-//            buttons.get(i) = (Button) view.findViewById(layoutIds[i]);
+//            buttons.get(i) = (Button) view.findViewById(layoutIds.get(i));
 //        }
 //    }
 
@@ -72,42 +83,37 @@ public class NumberPadView extends TableLayout implements View.OnClickListener {
         }
     }
 
+    private void setMultiButtonsTextColor(ArrayList<Button> buttons) {
+        for (Button btn : buttons) {
+            btn.setTextColor(mTextColor);
+        }
+    }
+
     @Override
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.btn_zero) {
             mController.onDurationChanged(0);
-
         } else if (i == R.id.btn_one) {
             mController.onDurationChanged(1);
-
         } else if (i == R.id.btn_two) {
             mController.onDurationChanged(2);
-
         } else if (i == R.id.btn_three) {
             mController.onDurationChanged(3);
-
         } else if (i == R.id.btn_four) {
             mController.onDurationChanged(4);
-
         } else if (i == R.id.btn_five) {
             mController.onDurationChanged(5);
-
         } else if (i == R.id.btn_six) {
             mController.onDurationChanged(6);
-
         } else if (i == R.id.btn_seven) {
             mController.onDurationChanged(7);
-
         } else if (i == R.id.btn_eight) {
             mController.onDurationChanged(8);
-
         } else if (i == R.id.btn_nine) {
             mController.onDurationChanged(9);
-
         } else if (i == R.id.btn_delete) {
             mController.onDurationChanged(-1);
-
         }
     }
 }
