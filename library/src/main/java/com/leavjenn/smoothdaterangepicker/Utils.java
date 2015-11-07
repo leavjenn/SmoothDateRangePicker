@@ -26,6 +26,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.Calendar;
 
@@ -181,5 +182,11 @@ public class Utils {
 //            presumedDays += step;
 //        } while (cursor.getTimeInMillis() != endInstant);
 //        return presumedDays;
+    }
+
+    public static void setMultiTextViewColor(int color, TextView... textViews) {
+        for (TextView textView : textViews) {
+            textView.setTextColor(color);
+        }
     }
 }
