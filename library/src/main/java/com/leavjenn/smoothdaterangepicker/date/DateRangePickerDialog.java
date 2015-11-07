@@ -299,7 +299,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
                              Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView: ");
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        View view = inflater.inflate(R.layout.date_picker_dialog, null);
+        View view = inflater.inflate(R.layout.date_picker_dialog, container);
 
         mDayOfWeekView = (TextView) view.findViewById(R.id.date_picker_header);
         mDayOfWeekViewEnd = (TextView) view.findViewById(R.id.date_picker_header_end);
