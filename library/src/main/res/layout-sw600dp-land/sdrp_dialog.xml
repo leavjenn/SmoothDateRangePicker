@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <include layout="@layout/date_picker_selected_date" />
+                <include layout="@layout/sdrp_selected_date" />
 
                 <View
                     android:id="@+id/hyphen"
@@ -49,18 +49,18 @@
                     android:layout_gravity="center"
                     android:background="@color/mdtp_accent_color_focused" />
 
-                <include layout="@layout/date_picker_selected_date_end" />
+                <include layout="@layout/sdrp_selected_date_end" />
 
             </LinearLayout>
 
-            <include layout="@layout/date_picker_duration" />
+            <include layout="@layout/sdrp_duration" />
 
         </LinearLayout>
 
-        <include layout="@layout/date_picker_view_animator" />
+        <include layout="@layout/sdrp_view_animator" />
 
     </LinearLayout>
 
-    <include layout="@layout/date_picker_done_button" />
+    <include layout="@layout/sdrp_done_button" />
 
 </LinearLayout>

@@ -299,7 +299,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
                              Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView: ");
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        View view = inflater.inflate(R.layout.date_picker_dialog, container);
+        View view = inflater.inflate(R.layout.sdrp_dialog, container);
 
         mDayOfWeekView = (TextView) view.findViewById(R.id.date_picker_header);
         mDayOfWeekViewEnd = (TextView) view.findViewById(R.id.date_picker_header_end);
@@ -386,7 +386,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
             view.findViewById(R.id.hyphen).setBackgroundColor(activity.getResources()
                     .getColor(R.color.date_picker_selector_unselected_dark_theme));
             Utils.setMultiTextColorList(activity.getResources()
-                            .getColorStateList(R.color.mdtp_date_picker_selector_dark),
+                            .getColorStateList(R.color.sdrp_selector_dark),
                     mDayOfWeekView, mDayOfWeekViewEnd,
                     mSelectedMonthTextView, mSelectedMonthTextViewEnd,
                     mSelectedDayTextView, mSelectedDayTextViewEnd,

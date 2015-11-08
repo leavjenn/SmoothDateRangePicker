@@ -12,7 +12,7 @@
     android:id="@+id/arrow_start"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:textColor="@color/mdtp_date_picker_selector"
+    android:textColor="@color/sdrp_selector"
     android:visibility="gone"
     android:text="&lt;"
     android:textSize="20sp"
@@ -24,14 +24,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/duration"
-        android:textColor="@color/mdtp_date_picker_selector"
+        android:textColor="@color/sdrp_selector"
         android:textSize="20sp" />
 
     <TextView
         android:id="@+id/date_picker_duration_days"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/mdtp_date_picker_selector"
+        android:textColor="@color/sdrp_selector"
         android:textSize="20sp"
         tools:text="12345"
         />
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:textCursorDrawable="@null"
         android:visibility="gone"
-        android:textColor="@color/mdtp_date_picker_selector"
+        android:textColor="@color/sdrp_selector"
         android:textSize="20sp" />
 
     <TextView
@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/day"
-        android:textColor="@color/mdtp_date_picker_selector"
+        android:textColor="@color/sdrp_selector"
         android:textSize="20sp"
         />
     <TextView
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:paddingRight="20dp"
         android:paddingLeft="20dp"
-        android:textColor="@color/mdtp_date_picker_selector"
+        android:textColor="@color/sdrp_selector"
         android:visibility="gone"
         android:text="&gt;"
         android:textSize="20sp"

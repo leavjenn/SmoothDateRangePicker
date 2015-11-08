@@ -39,13 +39,7 @@ public class NumberPadView extends TableLayout implements View.OnClickListener {
         } else {
             mTextColor = mContext.getResources().getColor(R.color.mdtp_date_picker_text_normal);
         }
-        View view = LayoutInflater.from(mContext).inflate(R.layout.number_pad, this);
-//        int[] layoutIds = {R.id.btn_zero, R.id.btn_one, R.id.btn_two, R.id.btn_three,
-//                R.id.btn_four, R.id.btn_five, R.id.btn_six, R.id.btn_seven,
-//                R.id.btn_eight, R.id.btn_nine, R.id.btn_delete};
-//        ArrayList<Integer> layoutIds =new ArrayList<>(Arrays.asList(R.id.btn_zero, R.id.btn_one,
-//                R.id.btn_two, R.id.btn_three, R.id.btn_four, R.id.btn_five, R.id.btn_six,
-//                R.id.btn_seven, R.id.btn_eight, R.id.btn_nine, R.id.btn_delete));
+        View view = LayoutInflater.from(mContext).inflate(R.layout.sdrp_number_pad, this);
         btnNum0 = (Button) view.findViewById(R.id.btn_zero);
         btnNum1 = (Button) view.findViewById(R.id.btn_one);
         btnNum2 = (Button) view.findViewById(R.id.btn_two);
@@ -59,7 +53,6 @@ public class NumberPadView extends TableLayout implements View.OnClickListener {
         btnDel = (Button) view.findViewById(R.id.btn_delete);
         ArrayList<Button> buttons = new ArrayList<>(Arrays.asList(btnNum0, btnNum1, btnNum2,
                 btnNum3, btnNum4, btnNum5, btnNum6, btnNum7, btnNum8, btnNum9, btnDel));
-//        initMultiBtns(buttons, layoutIds, view);
         setMultiButtonsTextColor(buttons);
         setMultiBtnsOnClickListener(buttons);
         btnDel.setOnLongClickListener(new OnLongClickListener() {
@@ -70,12 +63,6 @@ public class NumberPadView extends TableLayout implements View.OnClickListener {
             }
         });
     }
-
-//    private void initMultiBtns(ArrayList<Button> buttons, ArrayList<Integer> layoutIds, View view) {
-//        for (int i = 0; i < buttons.size(); i++) {
-//            buttons.get(i) = (Button) view.findViewById(layoutIds.get(i));
-//        }
-//    }
 
     private void setMultiBtnsOnClickListener(ArrayList<Button> buttons) {
         for (Button btn : buttons) {

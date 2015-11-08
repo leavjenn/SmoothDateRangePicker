@@ -15,59 +15,60 @@
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/day_picker_selected_date_layout"
+    android:id="@+id/day_picker_selected_date_layout_end"
     android:layout_width="@dimen/mdtp_date_picker_component_width_half"
     android:layout_height="wrap_content"
+    android:layout_weight="1"
     android:background="@color/mdtp_accent_color"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="20dp">
 
     <com.leavjenn.smoothdaterangepicker.AccessibleLinearLayout
-        android:id="@+id/date_picker_month_and_day"
+        android:id="@+id/date_picker_month_and_day_end"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:clickable="true"
         android:gravity="center"
         android:orientation="vertical"
-        android:textColor="@color/mdtp_date_picker_selector">
+        android:textColor="@color/sdrp_selector">
 
-        <TextView
-            android:id="@+id/date_picker_header"
+        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/date_picker_header_end"
             android:layout_width="@dimen/mdtp_date_picker_component_width"
             android:layout_height="@dimen/mdtp_date_picker_header_height"
             android:gravity="center"
             android:importantForAccessibility="no"
             android:includeFontPadding="false"
-            android:textColor="@color/mdtp_date_picker_selector"
+            android:textColor="@color/sdrp_selector"
             android:textSize="15sp"
-            tools:text="Wednesday" />
-
+            tools:text="Wednesday"
+            />
 
         <com.leavjenn.smoothdaterangepicker.AccessibleLinearLayout
-            android:id="@+id/date_picker_month_and_day1"
+            android:id="@+id/date_picker_month_and_day_end1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:clickable="false"
             android:gravity="center"
             android:orientation="horizontal"
-            android:textColor="@color/mdtp_date_picker_selector">
+            android:textColor="@color/sdrp_selector">
 
             <TextView
-                android:id="@+id/date_picker_month"
+                android:id="@+id/date_picker_month_end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:duplicateParentState="true"
                 android:gravity="center_horizontal|bottom"
                 android:includeFontPadding="false"
-                android:textColor="@color/mdtp_date_picker_selector"
+                android:textColor="@color/sdrp_selector"
                 android:textSize="22sp"
                 tools:text="May" />
 
             <TextView
-                android:id="@+id/date_picker_day"
+                android:id="@+id/date_picker_day_end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -75,21 +76,20 @@
                 android:duplicateParentState="true"
                 android:gravity="center"
                 android:includeFontPadding="false"
-                android:textColor="@color/mdtp_date_picker_selector"
+                android:textColor="@color/sdrp_selector"
                 android:textSize="22sp"
                 tools:text="15" />
         </com.leavjenn.smoothdaterangepicker.AccessibleLinearLayout>
-
     </com.leavjenn.smoothdaterangepicker.AccessibleLinearLayout>
 
     <com.leavjenn.smoothdaterangepicker.AccessibleTextView
-        android:id="@+id/date_picker_year"
+        android:id="@+id/date_picker_year_end"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center_horizontal|top"
         android:includeFontPadding="false"
-        android:textColor="@color/mdtp_date_picker_selector"
+        android:textColor="@color/sdrp_selector"
         android:textSize="@dimen/mdtp_selected_date_year_size"
         tools:text="2015" />
 

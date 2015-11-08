@@ -19,5 +19,5 @@
     android:layout_height="@dimen/mdtp_year_label_height"
     android:layout_gravity="center"
     android:gravity="center"
-    android:textColor="@color/mdtp_date_picker_year_selector"
+    android:textColor="@color/sdrp_year_selector"
     android:textSize="@dimen/mdtp_year_label_text_size" />
