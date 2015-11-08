@@ -46,7 +46,6 @@ public class YearPickerView extends ListView implements OnItemClickListener, Dat
     private int mChildSize;
     private TextViewWithCircularIndicator mSelectedView;
     private int mAccentColor;
-    protected int mYearTextColor;
 
     /**
      * @param context
@@ -61,13 +60,6 @@ public class YearPickerView extends ListView implements OnItemClickListener, Dat
         Resources res = context.getResources();
         mViewSize = res.getDimensionPixelOffset(R.dimen.mdtp_date_picker_view_animator_height);
         mChildSize = res.getDimensionPixelOffset(R.dimen.mdtp_year_label_height);
-        boolean darkTheme = mController.isThemeDark();
-        if(darkTheme) {
-            mYearTextColor = res.getColor(R.color.mdtp_date_picker_text_normal_dark_theme);
-        }
-        else {
-            mYearTextColor = res.getColor(R.color.mdtp_date_picker_text_normal);
-        }
         setVerticalFadingEdgeEnabled(true);
         setFadingEdgeLength(mChildSize / 3);
         init(context);
@@ -123,8 +115,7 @@ public class YearPickerView extends ListView implements OnItemClickListener, Dat
         public View getView(int position, View convertView, ViewGroup parent) {
             TextViewWithCircularIndicator v = (TextViewWithCircularIndicator)
                     super.getView(position, convertView, parent);
-            v.setAccentColor(mAccentColor);
-            v.setTextColor(mYearTextColor);
+            v.setAccentColor(mAccentColor, mController.isThemeDark());
             v.requestLayout();
             int year = getYearFromTextView(v);
             boolean selected = mController.getSelectedDay().year == year;
@@ -174,7 +165,7 @@ public class YearPickerView extends ListView implements OnItemClickListener, Dat
         }
     }
 
-    public void refreshYearAdapter(){
+    public void refreshYearAdapter() {
         mAdapter.clear();
         for (int year = mController.getMinSelectableYear(); year <= mController.getMaxYear(); year++) {
             mAdapter.add(String.format("%d", year));
