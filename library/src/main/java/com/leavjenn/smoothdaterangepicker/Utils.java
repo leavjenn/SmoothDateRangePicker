@@ -21,6 +21,7 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
@@ -184,9 +185,9 @@ public class Utils {
 //        return presumedDays;
     }
 
-    public static void setMultiTextViewColor(int color, TextView... textViews) {
+    public static void setMultiTextColorList(ColorStateList colorStateList, TextView... textViews) {
         for (TextView textView : textViews) {
-            textView.setTextColor(color);
+            textView.setTextColor(colorStateList);
         }
     }
 }

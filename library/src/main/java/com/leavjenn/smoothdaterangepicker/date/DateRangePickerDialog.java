@@ -385,7 +385,8 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
 
         if (mThemeDark) {
             view.findViewById(R.id.hyphen).setBackgroundColor(bgColor);
-            Utils.setMultiTextViewColor(bgColor, mDayOfWeekView, mDayOfWeekViewEnd,
+            Utils.setMultiTextColorList(activity.getResources().getColorStateList(R.color.mdtp_date_picker_selector_dark),
+                    mDayOfWeekView, mDayOfWeekViewEnd,
                     mSelectedMonthTextView, mSelectedMonthTextViewEnd,
                     mSelectedDayTextView, mSelectedDayTextViewEnd,
                     mYearView, mYearViewEnd, mDurationTextView,
