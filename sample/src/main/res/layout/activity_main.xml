@@ -14,7 +14,7 @@
         android:layout_gravity="center_horizontal" />
 
     <TextView
-        android:id="@+id/tv_date"
+        android:id="@+id/tv_date_range"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -27,12 +27,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="Date picker"
+        android:text="Stock Date picker"
         android:layout_gravity="center_horizontal" />
 
 
     <TextView
-        android:id="@+id/tv_date1"
+        android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"

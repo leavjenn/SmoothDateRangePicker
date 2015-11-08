@@ -13,22 +13,34 @@ import com.leavjenn.smoothdaterangepicker.date.SmoothDateRangePickerFragment;
 import java.util.Calendar;
 
 
-public class MainActivity extends AppCompatActivity
-        implements SmoothDateRangePickerFragment.OnDateRangeSetListener {
-    private TextView tvDate, tvDate1;
+public class MainActivity extends AppCompatActivity {
+    private TextView tvDateRange, tvDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tvDateRange = (TextView) findViewById(R.id.tv_date_range);
         tvDate = (TextView) findViewById(R.id.tv_date);
-        tvDate1 = (TextView) findViewById(R.id.tv_date1);
         Button btnDateRange = (Button) findViewById(R.id.btn_date_range_picker);
         btnDateRange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 SmoothDateRangePickerFragment smoothDateRangePickerFragment =
-                        SmoothDateRangePickerFragment.newInstance(MainActivity.this);
+                        SmoothDateRangePickerFragment
+                                .newInstance(new SmoothDateRangePickerFragment.OnDateRangeSetListener() {
+                                    @Override
+                                    public void onDateRangeSet(SmoothDateRangePickerFragment view,
+                                                               int yearStart, int monthOfYearStart,
+                                                               int dayOfMonthStart, int yearEnd,
+                                                               int monthOfYearEnd, int dayOfMonthEnd) {
+                                        String date = "You picked the following date range: \n"
+                                                + "From " + dayOfMonthStart + "/" + (++monthOfYearStart)
+                                                + "/" + yearStart + " To " + dayOfMonthEnd + "/"
+                                                + (++monthOfYearEnd) + "/" + yearEnd;
+                                        tvDateRange.setText(date);
+                                    }
+                                });
                 smoothDateRangePickerFragment.show(getFragmentManager(), "Datepickerdialog");
             }
         });
@@ -46,25 +58,16 @@ public class MainActivity extends AppCompatActivity
                         new android.app.DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                tvDate1.setText((year + "/" + monthOfYear + "/" + dayOfMonth));
+                                tvDate.setText("You picked the following date: \n"
+                                        + (year + "/" + monthOfYear + "/" + dayOfMonth));
                             }
                         }, year, month, day);
                 Calendar cc = Calendar.getInstance();
                 cc.set(2014, 4, 22);
                 datePickerDialog.getDatePicker().setMinDate(cc.getTimeInMillis());
                 datePickerDialog.show();
-
             }
         });
-    }
-
-    @Override
-    public void onDateRangeSet(SmoothDateRangePickerFragment view, int yearStart, int monthOfYearStart, int dayOfMonthStart,
-                               int yearEnd, int monthOfYearEnd, int dayOfMonthEnd) {
-        String date = "You picked the following date: \n" +
-                "From " + dayOfMonthStart + "/" + (++monthOfYearStart) + "/" + yearStart +
-                " To " + dayOfMonthEnd + "/" + (++monthOfYearEnd) + "/" + yearEnd;
-        tvDate.setText(date);
     }
 }
 
