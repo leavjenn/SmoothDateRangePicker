@@ -21,7 +21,7 @@ import java.util.Calendar;
 /**
  * Controller class to communicate among the various components of the date picker dialog.
  */
-public interface DateRangePickerController {
+public interface SmoothDateRangePickerController {
 
     void onYearSelected(int year);
 
@@ -29,9 +29,9 @@ public interface DateRangePickerController {
 
     void onDurationChanged(int duration);
 
-    void registerOnDateChangedListener(DateRangePickerDialog.OnDateChangedListener listener);
+    void registerOnDateChangedListener(SmoothDateRangePickerFragment.OnDateChangedListener listener);
 
-    void unregisterOnDateChangedListener(DateRangePickerDialog.OnDateChangedListener listener);
+    void unregisterOnDateChangedListener(SmoothDateRangePickerFragment.OnDateChangedListener listener);
 
     MonthAdapter.CalendarDay getSelectedDay();
 

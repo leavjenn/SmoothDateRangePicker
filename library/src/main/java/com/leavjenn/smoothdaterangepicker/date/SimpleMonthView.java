@@ -22,7 +22,7 @@ import android.util.AttributeSet;
 
 public class SimpleMonthView extends MonthView {
 
-    public SimpleMonthView(Context context, AttributeSet attr, DateRangePickerController controller) {
+    public SimpleMonthView(Context context, AttributeSet attr, SmoothDateRangePickerController controller) {
         super(context, attr, controller);
     }
 

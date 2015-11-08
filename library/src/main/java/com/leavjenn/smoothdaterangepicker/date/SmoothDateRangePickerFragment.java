@@ -56,10 +56,10 @@ import java.util.Locale;
 /**
  * Dialog allowing users to select a date.
  */
-public class DateRangePickerDialog extends DialogFragment implements OnClickListener,
-        DateRangePickerController {
+public class SmoothDateRangePickerFragment extends DialogFragment implements OnClickListener,
+        SmoothDateRangePickerController {
 
-    private static final String TAG = "DateRangePickerDialog";
+    private static final String TAG = "SmoothDateRangePickerFragment";
 
     private static final int UNINITIALIZED = -1;
     private static final int MONTH_AND_DAY_VIEW = 0;
@@ -182,7 +182,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
          *                         with {@link Calendar}.
          * @param dayOfMonthEnd    The end day of the month that was set.
          */
-        void onDateRangeSet(DateRangePickerDialog view, int yearStart, int monthOfYearStart,
+        void onDateRangeSet(SmoothDateRangePickerFragment view, int yearStart, int monthOfYearStart,
                             int dayOfMonthStart, int yearEnd, int monthOfYearEnd, int dayOfMonthEnd);
     }
 
@@ -193,7 +193,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
         void onDateChanged();
     }
 
-    public DateRangePickerDialog() {
+    public SmoothDateRangePickerFragment() {
         // Empty constructor required for dialog fragment.
     }
 
@@ -203,10 +203,10 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
      * @param monthOfYear The initial month of the dialog.
      * @param dayOfMonth  The initial day of the dialog.
      */
-    public static DateRangePickerDialog newInstance(OnDateRangeSetListener callBack, int year,
+    public static SmoothDateRangePickerFragment newInstance(OnDateRangeSetListener callBack, int year,
                                                     int monthOfYear,
                                                     int dayOfMonth) {
-        DateRangePickerDialog ret = new DateRangePickerDialog();
+        SmoothDateRangePickerFragment ret = new SmoothDateRangePickerFragment();
         ret.initialize(callBack, year, monthOfYear, dayOfMonth);
         return ret;
     }
@@ -215,8 +215,8 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
      * @param callBack How the parent is notified that the date is set.
      *                 the initial date is set to today
      */
-    public static DateRangePickerDialog newInstance(OnDateRangeSetListener callBack) {
-        DateRangePickerDialog ret = new DateRangePickerDialog();
+    public static SmoothDateRangePickerFragment newInstance(OnDateRangeSetListener callBack) {
+        SmoothDateRangePickerFragment ret = new SmoothDateRangePickerFragment();
         Calendar todayCal = Calendar.getInstance();
         ret.initialize(callBack, todayCal.get(Calendar.YEAR), todayCal.get(Calendar.MONTH),
                 todayCal.get(Calendar.DAY_OF_MONTH));
@@ -417,7 +417,7 @@ public class DateRangePickerDialog extends DialogFragment implements OnClickList
             public void onClick(View v) {
                 tryVibrate();
                 if (mCallBack != null) {
-                    mCallBack.onDateRangeSet(DateRangePickerDialog.this,
+                    mCallBack.onDateRangeSet(SmoothDateRangePickerFragment.this,
                             mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH),
                             mCalendar.get(Calendar.DAY_OF_MONTH), mCalendarEnd.get(Calendar.YEAR),
                             mCalendarEnd.get(Calendar.MONTH), mCalendarEnd.get(Calendar.DAY_OF_MONTH));

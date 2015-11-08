@@ -28,12 +28,12 @@ public class SimpleDayPickerView extends DayPickerView {
         super(context, attrs);
     }
 
-    public SimpleDayPickerView(Context context, DateRangePickerController controller) {
+    public SimpleDayPickerView(Context context, SmoothDateRangePickerController controller) {
         super(context, controller);
     }
 
     @Override
-    public MonthAdapter createMonthAdapter(Context context, DateRangePickerController controller) {
+    public MonthAdapter createMonthAdapter(Context context, SmoothDateRangePickerController controller) {
         return new SimpleMonthAdapter(context, controller);
     }
 

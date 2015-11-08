@@ -33,7 +33,7 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 
 import com.leavjenn.smoothdaterangepicker.Utils;
-import com.leavjenn.smoothdaterangepicker.date.DateRangePickerDialog.OnDateChangedListener;
+import com.leavjenn.smoothdaterangepicker.date.SmoothDateRangePickerFragment.OnDateChangedListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -89,7 +89,7 @@ public abstract class DayPickerView extends ListView implements OnScrollListener
     // used for tracking what state listview is in
     protected int mCurrentScrollState = OnScrollListener.SCROLL_STATE_IDLE;
 
-    private DateRangePickerController mController;
+    private SmoothDateRangePickerController mController;
     private boolean mPerformingScroll;
 
     public DayPickerView(Context context, AttributeSet attrs) {
@@ -97,13 +97,13 @@ public abstract class DayPickerView extends ListView implements OnScrollListener
         init(context);
     }
 
-    public DayPickerView(Context context, DateRangePickerController controller) {
+    public DayPickerView(Context context, SmoothDateRangePickerController controller) {
         super(context);
         init(context);
         setController(controller);
     }
 
-    public void setController(DateRangePickerController controller) {
+    public void setController(SmoothDateRangePickerController controller) {
         mController = controller;
         mController.registerOnDateChangedListener(this);
         refreshAdapter();
@@ -137,7 +137,7 @@ public abstract class DayPickerView extends ListView implements OnScrollListener
         setAdapter(mAdapter);
     }
 
-    public abstract MonthAdapter createMonthAdapter(Context context, DateRangePickerController controller);
+    public abstract MonthAdapter createMonthAdapter(Context context, SmoothDateRangePickerController controller);
 
     /*
      * Sets all the required fields for the list view. Override this method to

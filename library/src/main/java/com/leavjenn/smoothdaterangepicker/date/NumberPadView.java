@@ -14,12 +14,12 @@ import java.util.Arrays;
 
 public class NumberPadView extends TableLayout implements View.OnClickListener {
     private Context mContext;
-    private DateRangePickerController mController;
+    private SmoothDateRangePickerController mController;
     private Button btnNum0, btnNum1, btnNum2, btnNum3, btnNum4, btnNum5,
             btnNum6, btnNum7, btnNum8, btnNum9, btnDel;
     private int mTextColor;
 
-    public NumberPadView(Context context, DateRangePickerController controller) {
+    public NumberPadView(Context context, SmoothDateRangePickerController controller) {
         super(context);
         mContext = context;
         mController = controller;

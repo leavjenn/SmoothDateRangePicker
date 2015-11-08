@@ -23,7 +23,7 @@ import android.content.Context;
  */
 public class SimpleMonthAdapter extends MonthAdapter {
 
-    public SimpleMonthAdapter(Context context, DateRangePickerController controller) {
+    public SimpleMonthAdapter(Context context, SmoothDateRangePickerController controller) {
         super(context, controller);
     }
 
