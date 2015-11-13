@@ -72,9 +72,6 @@ artifacts {
     archives generateSourcesJar
 }
 
-def siteUrl = 'https://github.com/zhengxiaopeng/BounceProgressBar'
-def gitUrl = 'https://github.com/zhengxiaopeng/BounceProgressBar.git'
-
 group = publishedGroupId
 version = libraryVersion
 
