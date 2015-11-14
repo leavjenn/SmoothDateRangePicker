@@ -2,30 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'smoothdaterangepicker'
-
-    publishedGroupId = 'com.leavjenn.widget'
-    libraryName = 'SmoothDateRangePicker'
-    artifact = 'smoothdaterangepicker'
-
-    libraryDescription = 'An Android date range picker widget based on stock material design date picker'
-
-    siteUrl = 'https://github.com/leavjenn/SmoothDateRangePicker'
-    gitUrl = 'https://github.com/leavjenn/SmoothDateRangePicker'
-
-    libraryVersion = '0.1.0'
-
-    developerId = 'leavjenn'
-    developerName = 'Leav Jenn'
-    developerEmail = 'leavjenn@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
-
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
@@ -60,16 +36,36 @@ task generateJavadocs(type: Javadoc) {
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }
 
-task generateJavadocsJar(type: Jar) {
+task generateJavadocsJar(type: Jar, dependsOn: generateJavadocs) {
     from generateJavadocs.destinationDir
     classifier 'javadoc'
 }
 
-generateJavadocsJar.dependsOn generateJavadocs
-
 artifacts {
     archives generateJavadocsJar
     archives generateSourcesJar
+}
+
+
+ext {
+    publishedGroupId = 'com.leavjenn.widget'
+    libraryName = 'SmoothDateRangePicker'
+    artifact = 'smoothdaterangepicker'
+
+    libraryDescription = 'An Android date range picker widget based on stock material design date picker'
+
+    siteUrl = 'https://github.com/leavjenn/SmoothDateRangePicker'
+    gitUrl = 'https://github.com/leavjenn/SmoothDateRangePicker.git'
+
+    libraryVersion = '0.1.0'
+
+    developerId = 'leavjenn'
+    developerName = 'Leav Jenn'
+    developerEmail = 'leavjenn@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
 }
 
 group = publishedGroupId
@@ -105,14 +101,13 @@ install {
                     connection gitUrl
                     developerConnection gitUrl
                     url siteUrl
-
                 }
             }
         }
     }
 }
 
-// Bintray
+// bintray
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 bintray {
@@ -120,15 +115,16 @@ bintray {
     key = properties.getProperty("bintray.apikey")
     configurations = ['archives']
     pkg {
-        repo = bintrayRepo
-        name = bintrayName
+        repo = 'maven'
+        name = libraryName
         desc = libraryDescription
-        websiteUrl = siteUrl
         vcsUrl = gitUrl
+        websiteUrl = siteUrl
         licenses = allLicenses
         publish = true
         publicDownloadNumbers = true
         version {
+            name = libraryVersion
             desc = libraryDescription
         }
     }
