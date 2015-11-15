@@ -48,7 +48,7 @@ artifacts {
 
 
 ext {
-    publishedGroupId = 'com.leavjenn.widget'
+    publishedGroupId = 'com.leavjenn.smoothdaterangepicker'
     libraryName = 'SmoothDateRangePicker'
     artifact = 'smoothdaterangepicker'
 
@@ -71,41 +71,41 @@ ext {
 group = publishedGroupId
 version = libraryVersion
 
-install {
-    repositories.mavenInstaller {
-        // This generates POM.xml with proper parameters
-        pom {
-            project {
-                packaging 'aar'
-                groupId publishedGroupId
-                artifactId artifact
-
-                name libraryName
-                description libraryDescription
-                url siteUrl
-
-                licenses {
-                    license {
-                        name licenseName
-                        url licenseUrl
-                    }
-                }
-                developers {
-                    developer {
-                        id developerId
-                        name developerName
-                        email developerEmail
-                    }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
-                }
-            }
-        }
-    }
-}
+//install {
+//    repositories.mavenInstaller {
+//        // This generates POM.xml with proper parameters
+//        pom {
+//            project {
+//                packaging 'aar'
+//                groupId publishedGroupId
+//                artifactId artifact
+//
+//                name libraryName
+//                description libraryDescription
+//                url siteUrl
+//
+//                licenses {
+//                    license {
+//                        name licenseName
+//                        url licenseUrl
+//                    }
+//                }
+//                developers {
+//                    developer {
+//                        id developerId
+//                        name developerName
+//                        email developerEmail
+//                    }
+//                }
+//                scm {
+//                    connection gitUrl
+//                    developerConnection gitUrl
+//                    url siteUrl
+//                }
+//            }
+//        }
+//    }
+//}
 
 // bintray
 Properties properties = new Properties()
