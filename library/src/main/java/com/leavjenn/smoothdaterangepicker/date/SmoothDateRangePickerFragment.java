@@ -174,16 +174,16 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
         /**
          * @param view             The view associated with this listener.
          * @param yearStart        The start year that was set.
-         * @param monthOfYearStart The start month that was set (0-11) for compatibility
+         * @param monthStart The start month that was set (0-11) for compatibility
          *                         with {@link Calendar}.
-         * @param dayOfMonthStart  The start day of the month that was set.
+         * @param dayStart  The start day of the month that was set.
          * @param yearEnd          The end year that was set.
-         * @param monthOfYearEnd   The end month that was set (0-11) for compatibility
+         * @param monthEnd   The end month that was set (0-11) for compatibility
          *                         with {@link Calendar}.
-         * @param dayOfMonthEnd    The end day of the month that was set.
+         * @param dayEnd    The end day of the month that was set.
          */
-        void onDateRangeSet(SmoothDateRangePickerFragment view, int yearStart, int monthOfYearStart,
-                            int dayOfMonthStart, int yearEnd, int monthOfYearEnd, int dayOfMonthEnd);
+        void onDateRangeSet(SmoothDateRangePickerFragment view, int yearStart, int monthStart,
+                            int dayStart, int yearEnd, int monthEnd, int dayEnd);
     }
 
     /**

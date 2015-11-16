@@ -31,13 +31,13 @@ public class MainActivity extends AppCompatActivity {
                                 .newInstance(new SmoothDateRangePickerFragment.OnDateRangeSetListener() {
                                     @Override
                                     public void onDateRangeSet(SmoothDateRangePickerFragment view,
-                                                               int yearStart, int monthOfYearStart,
-                                                               int dayOfMonthStart, int yearEnd,
-                                                               int monthOfYearEnd, int dayOfMonthEnd) {
+                                                               int yearStart, int monthStart,
+                                                               int dayStart, int yearEnd,
+                                                               int monthEnd, int dayEnd) {
                                         String date = "You picked the following date range: \n"
-                                                + "From " + dayOfMonthStart + "/" + (++monthOfYearStart)
-                                                + "/" + yearStart + " To " + dayOfMonthEnd + "/"
-                                                + (++monthOfYearEnd) + "/" + yearEnd;
+                                                + "From " + dayStart + "/" + (++monthStart)
+                                                + "/" + yearStart + " To " + dayEnd + "/"
+                                                + (++monthEnd) + "/" + yearEnd;
                                         tvDateRange.setText(date);
                                     }
                                 });
