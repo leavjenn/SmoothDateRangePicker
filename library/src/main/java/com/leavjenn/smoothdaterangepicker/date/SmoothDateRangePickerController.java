@@ -21,7 +21,7 @@ import java.util.Calendar;
 /**
  * Controller class to communicate among the various components of the date picker dialog.
  */
-public interface SmoothDateRangePickerController {
+interface SmoothDateRangePickerController {
 
     void onYearSelected(int year);
 
