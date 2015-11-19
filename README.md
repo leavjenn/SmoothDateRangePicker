@@ -70,11 +70,11 @@ smoothDateRangePickerFragment.show(getFragmentManager(), "smoothDateRangePicker"
 
 
 ### Date
-**Set selecteable minimal date:**
+**Set selectable minimal date:**
 
 `setMinDate(Calendar calendar)`
 
-**Set selecteable max date:**
+**Set selectable max date:**
 
 `setMaxDate(Calendar calendar)`
 
