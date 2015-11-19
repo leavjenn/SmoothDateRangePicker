@@ -24,13 +24,15 @@ dependencies {
 
 ## Usage
 
-Since SmoothDateRangePickerFragment is a subclass of DialogFragment, the usage is just like other DialogFragment:
+Since SmoothDateRangePickerFragment is a subclass of DialogFragment, the usage is just like other DialogFragment.
+
+**Instantiation, the default selected date is set to today:**
 ```
 SmoothDateRangePickerFragment.newInstance(SmoothDateRangePickerFragment.OnDateRangeSetListener callBack)
 ```
-The default selected date is set to today.
 
-Specify the default selected date:
+
+**Instantiation, specify the default selected date:**
 ```
 SmoothDateRangePickerFragment.newInstance(SmoothDateRangePickerFragment.OnDateRangeSetListener callBack, 
 int year, int monthOfYear, int dayOfMonth)
