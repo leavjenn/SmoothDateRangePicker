@@ -18,7 +18,7 @@ repositories {
 Add the following into app `build.gradle`:
 ```
 dependencies {
-  compile 'com.leavjenn:smoothdaterangepicker:0.2.0'
+  compile 'com.leavjenn.smoothdaterangepicker:library:0.2.0'
 }
 ```
 
