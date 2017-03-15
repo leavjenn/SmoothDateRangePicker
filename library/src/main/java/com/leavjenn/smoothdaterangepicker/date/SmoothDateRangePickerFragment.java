@@ -18,12 +18,12 @@ package com.leavjenn.smoothdaterangepicker.date;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
-import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.DialogFragment;
 import android.text.InputType;
 import android.text.format.DateUtils;
 import android.util.Log;
@@ -297,7 +297,7 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d(TAG, "onCreateView: ");
+        //Log.d(TAG, "onCreateView: ");
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         View view = inflater.inflate(R.layout.sdrp_dialog, container);
 
