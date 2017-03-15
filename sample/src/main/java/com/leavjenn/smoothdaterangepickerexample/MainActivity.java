@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                                         tvDateRange.setText(date);
                                     }
                                 });
-                smoothDateRangePickerFragment.show(getFragmentManager(), "Datepickerdialog");
+                smoothDateRangePickerFragment.show(getSupportFragmentManager(), "Datepickerdialog");
             }
         });
 
