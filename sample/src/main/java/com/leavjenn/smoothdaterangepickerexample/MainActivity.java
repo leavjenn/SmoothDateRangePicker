@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.leavjenn.smoothdaterangepicker.date.SmoothDateRangePickerFragment;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tvDateRange = (TextView) findViewById(R.id.tv_date_range);
         tvDate = (TextView) findViewById(R.id.tv_date);
+        final GregorianCalendar today         = new GregorianCalendar();
+        final GregorianCalendar tomorrow      = new GregorianCalendar();
+        tomorrow.add(Calendar.DATE,1);
         Button btnDateRange = (Button) findViewById(R.id.btn_date_range_picker);
         btnDateRange.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,11 +44,10 @@ public class MainActivity extends AppCompatActivity {
                                                 + (++monthEnd) + "/" + yearEnd;
                                         tvDateRange.setText(date);
                                     }
-                                });
+                                },today,tomorrow);
                 smoothDateRangePickerFragment.show(getFragmentManager(), "Datepickerdialog");
             }
         });
-
         Button btnDate = (Button) findViewById(R.id.btn_date_picker);
         btnDate.setOnClickListener(new View.OnClickListener() {
             @Override
