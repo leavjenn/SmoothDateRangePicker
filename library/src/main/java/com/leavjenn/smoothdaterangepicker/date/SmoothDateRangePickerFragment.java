@@ -212,6 +212,17 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
     }
 
     /**
+     * @param callBack    How the parent is notified that the date is set.
+     * @param startDate   The initial start date.
+     * @param endDate     The initial end date.
+     */
+    public static SmoothDateRangePickerFragment newInstance(OnDateRangeSetListener callBack, Calendar startDate, Calendar endDate) {
+        SmoothDateRangePickerFragment ret = new SmoothDateRangePickerFragment();
+        ret.initialize(callBack, startDate, endDate);
+        return ret;
+    }
+
+    /**
      * @param callBack How the parent is notified that the date is set.
      *                 the initial date is set to today
      */
@@ -231,7 +242,17 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
         mCalendarEnd.set(Calendar.YEAR, year);
         mCalendarEnd.set(Calendar.MONTH, monthOfYear);
         mCalendarEnd.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        initialize();
+    }
 
+    public void initialize(OnDateRangeSetListener callBack, Calendar startDate, Calendar endDate) {
+        mCallBack       = callBack;
+        mCalendar       = startDate;
+        mCalendarEnd    = endDate;
+        initialize();
+    }
+
+    public void initialize(){
         mThemeDark = false;
         mAccentColor = -1;
         mVibrate = true;
