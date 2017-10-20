@@ -159,6 +159,8 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
 
     private boolean mDelayAnimation = true;
 
+    private boolean mShowDuration = true;
+
     // Accessibility strings.
     private String mDayPickerDescription;
     private String mSelectDay;
@@ -204,10 +206,25 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
      * @param dayOfMonth  The initial day of the dialog.
      */
     public static SmoothDateRangePickerFragment newInstance(OnDateRangeSetListener callBack, int year,
-                                                    int monthOfYear,
-                                                    int dayOfMonth) {
+                                                            int monthOfYear,
+                                                            int dayOfMonth,
+                                                            boolean showDuration) {
         SmoothDateRangePickerFragment ret = new SmoothDateRangePickerFragment();
-        ret.initialize(callBack, year, monthOfYear, dayOfMonth);
+        ret.initialize(callBack, year, monthOfYear, dayOfMonth, showDuration);
+        return ret;
+    }
+
+    /**
+     * @param callBack    How the parent is notified that the date is set.
+     * @param year        The initial year of the dialog.
+     * @param monthOfYear The initial month of the dialog.
+     * @param dayOfMonth  The initial day of the dialog.
+     */
+    public static SmoothDateRangePickerFragment newInstance(OnDateRangeSetListener callBack, int year,
+                                                            int monthOfYear,
+                                                            int dayOfMonth) {
+        SmoothDateRangePickerFragment ret = new SmoothDateRangePickerFragment();
+        ret.initialize(callBack, year, monthOfYear, dayOfMonth, true);
         return ret;
     }
 
@@ -219,11 +236,11 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
         SmoothDateRangePickerFragment ret = new SmoothDateRangePickerFragment();
         Calendar todayCal = Calendar.getInstance();
         ret.initialize(callBack, todayCal.get(Calendar.YEAR), todayCal.get(Calendar.MONTH),
-                todayCal.get(Calendar.DAY_OF_MONTH));
+                todayCal.get(Calendar.DAY_OF_MONTH), true);
         return ret;
     }
 
-    public void initialize(OnDateRangeSetListener callBack, int year, int monthOfYear, int dayOfMonth) {
+    public void initialize(OnDateRangeSetListener callBack, int year, int monthOfYear, int dayOfMonth, boolean showDuration) {
         mCallBack = callBack;
         mCalendar.set(Calendar.YEAR, year);
         mCalendar.set(Calendar.MONTH, monthOfYear);
@@ -236,6 +253,7 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
         mAccentColor = -1;
         mVibrate = true;
         mDismissOnPause = false;
+        mShowDuration = showDuration;
     }
 
     @Override
@@ -320,6 +338,9 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
         mYearViewEnd.setOnClickListener(this);
 
         mDurationView = (LinearLayout) view.findViewById(R.id.date_picker_duration_layout);
+        if(!mShowDuration) {
+            mDurationView.setVisibility(View.GONE);
+        }
         mDurationView.setOnClickListener(this);
         mDurationTextView = (TextView) view.findViewById(R.id.date_picker_duration_days);
         mDurationEditText = (EditText) view.findViewById(R.id.date_picker_duration_days_et);
@@ -779,6 +800,10 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
             mDayPickerView.onChange();
             mDayPickerViewEnd.onChange();
         }
+    }
+
+    public void setShowDuration(boolean showDuration) {
+        this.mShowDuration = showDuration;
     }
 
     /**
