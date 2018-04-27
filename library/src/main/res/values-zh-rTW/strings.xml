@@ -29,6 +29,8 @@
     <string name="mdtp_item_is_selected" msgid="2674929164900463786">"已選取 <xliff:g id="ITEM">%1$s</xliff:g>"</string>
     <string name="mdtp_deleted_key" msgid="6908431551612331381">"已刪除 <xliff:g id="KEY">%1$s</xliff:g>"</string>
     <string name="duration">持續時間：\u0020</string>
-    <string name="day">\u0020日</string>
-    <string name="days">\u0020日</string>
+
+    <plurals name="day">
+        <item quantity="other">日</item>
+    </plurals>
 </resources>

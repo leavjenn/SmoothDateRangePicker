@@ -627,7 +627,7 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
         mYearViewEnd.setText(YEAR_FORMAT.format(mCalendarEnd.getTime()));
         mDuration = Utils.daysBetween(mCalendar, mCalendarEnd);
         mDurationTextView.setText(String.valueOf(mDuration));
-        mDurationDayTextView.setText(mDuration > 1 ? getString(R.string.days) : getString(R.string.day));
+        mDurationDayTextView.setText(" " + getResources().getQuantityString(R.plurals.day, mDuration));
 
         // Accessibility.
         long millis = mCalendar.getTimeInMillis();
