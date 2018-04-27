@@ -75,6 +75,9 @@
 
     <!--Duration text-->
     <string name="duration">Duration:\u0020</string>
-    <string name="day">\u0020day</string>
-    <string name="days">\u0020days</string>
+    <plurals name="day">
+        <item quantity="one">day</item>
+        <item quantity="many">days</item>
+        <item quantity="other">days</item>
+    </plurals>
 </resources>

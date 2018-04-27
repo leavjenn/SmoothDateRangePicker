@@ -28,7 +28,10 @@
     <string name="mdtp_select_year" msgid="2603330600102539372">"Select year"</string>
     <string name="mdtp_item_is_selected" msgid="2674929164900463786">"<xliff:g id="ITEM">%1$s</xliff:g> selected"</string>
     <string name="mdtp_deleted_key" msgid="6908431551612331381">"<xliff:g id="KEY">%1$s</xliff:g> deleted"</string>
-    <string name="day">\u0020day</string>
-    <string name="days">\u0020days</string>
     <string name="duration">Duration:\u0020</string>
+    <plurals name="day">
+        <item quantity="one">day</item>
+        <item quantity="many">days</item>
+        <item quantity="other">days</item>
+    </plurals>
 </resources>
