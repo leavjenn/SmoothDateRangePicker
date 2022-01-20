@@ -74,7 +74,6 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
     private static final String KEY_SELECTED_MONTH_END = "selected_month_end";
     private static final String KEY_SELECTED_DAY = "selected_day";
     private static final String KEY_SELECTED_DAY_END = "selected_day_end";
-    private static final String KEY_DURATION_DAYS = "duration_days";
     private static final String KEY_LIST_POSITION = "list_position";
     private static final String KEY_LIST_POSITION_END = "list_position_end";
     private static final String KEY_WEEK_START = "week_start";
@@ -92,6 +91,7 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
     private static final String KEY_ACCENT = "accent";
     private static final String KEY_VIBRATE = "vibrate";
     private static final String KEY_DISMISS = "dismiss";
+    private static final String KEY_SHOW_DURATION = "show_duration";
 
     private static final int DEFAULT_START_YEAR = 1900;
     private static final int DEFAULT_END_YEAR = 2100;
@@ -159,6 +159,8 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
 
     private boolean mDelayAnimation = true;
 
+    private boolean mShowDuration = true;
+
     // Accessibility strings.
     private String mDayPickerDescription;
     private String mSelectDay;
@@ -182,8 +184,9 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
          *                         with {@link Calendar}.
          * @param dayEnd    The end day of the month that was set.
          */
-        void onDateRangeSet(SmoothDateRangePickerFragment view, int yearStart, int monthStart,
-                            int dayStart, int yearEnd, int monthEnd, int dayEnd);
+        void onDateRangeSet(SmoothDateRangePickerFragment view,
+                            int yearStart, int monthStart, int dayStart,
+                            int yearEnd, int monthEnd, int dayEnd);
     }
 
     /**
@@ -292,6 +295,7 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
         outState.putInt(KEY_ACCENT, mAccentColor);
         outState.putBoolean(KEY_VIBRATE, mVibrate);
         outState.putBoolean(KEY_DISMISS, mDismissOnPause);
+        outState.putBoolean(KEY_SHOW_DURATION, mShowDuration);
     }
 
     @Override
@@ -299,45 +303,6 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
                              Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView: ");
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        View view = inflater.inflate(R.layout.sdrp_dialog, container);
-
-        mDayOfWeekView = (TextView) view.findViewById(R.id.date_picker_header);
-        mDayOfWeekViewEnd = (TextView) view.findViewById(R.id.date_picker_header_end);
-        mMonthAndDayView = (LinearLayout) view.findViewById(R.id.date_picker_month_and_day);
-        mMonthAndDayViewEnd = (LinearLayout) view.findViewById(R.id.date_picker_month_and_day_end);
-        mMonthAndDayView.setOnClickListener(this);
-        mMonthAndDayViewEnd.setOnClickListener(this);
-
-        mSelectedMonthTextView = (TextView) view.findViewById(R.id.date_picker_month);
-        mSelectedMonthTextViewEnd = (TextView) view.findViewById(R.id.date_picker_month_end);
-
-        mSelectedDayTextView = (TextView) view.findViewById(R.id.date_picker_day);
-        mSelectedDayTextViewEnd = (TextView) view.findViewById(R.id.date_picker_day_end);
-
-        mYearView = (TextView) view.findViewById(R.id.date_picker_year);
-        mYearViewEnd = (TextView) view.findViewById(R.id.date_picker_year_end);
-        mYearView.setOnClickListener(this);
-        mYearViewEnd.setOnClickListener(this);
-
-        mDurationView = (LinearLayout) view.findViewById(R.id.date_picker_duration_layout);
-        mDurationView.setOnClickListener(this);
-        mDurationTextView = (TextView) view.findViewById(R.id.date_picker_duration_days);
-        mDurationEditText = (EditText) view.findViewById(R.id.date_picker_duration_days_et);
-        // disable soft keyboard popup when edittext is selected
-        mDurationEditText.setRawInputType(InputType.TYPE_CLASS_TEXT);
-        mDurationEditText.setTextIsSelectable(true);
-        mDurationDayTextView = (TextView) view.findViewById(R.id.tv_duration_day);
-        mDurationArrow = (TextView) view.findViewById(R.id.arrow_start);
-        mDurationArrow.setOnClickListener(this);
-        mDurationArrowEnd = (TextView) view.findViewById(R.id.arrow_end);
-        mDurationArrowEnd.setOnClickListener(this);
-
-        viewList = new ArrayList<>();
-        viewList.add(MONTH_AND_DAY_VIEW, mMonthAndDayView);
-        viewList.add(YEAR_VIEW, mYearView);
-        viewList.add(MONTH_AND_DAY_VIEW_END, mMonthAndDayViewEnd);
-        viewList.add(YEAR_VIEW_END, mYearViewEnd);
-        viewList.add(DURATION_VIEW, mDurationView);
 
         int listPosition = -1;
         int listPositionOffset = 0;
@@ -362,7 +327,51 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
             mAccentColor = savedInstanceState.getInt(KEY_ACCENT);
             mVibrate = savedInstanceState.getBoolean(KEY_VIBRATE);
             mDismissOnPause = savedInstanceState.getBoolean(KEY_DISMISS);
+            mShowDuration = savedInstanceState.getBoolean(KEY_SHOW_DURATION);
         }
+
+        View view = inflater.inflate(R.layout.sdrp_dialog, container);
+
+        mDayOfWeekView = (TextView) view.findViewById(R.id.date_picker_header);
+        mDayOfWeekViewEnd = (TextView) view.findViewById(R.id.date_picker_header_end);
+        mMonthAndDayView = (LinearLayout) view.findViewById(R.id.date_picker_month_and_day);
+        mMonthAndDayViewEnd = (LinearLayout) view.findViewById(R.id.date_picker_month_and_day_end);
+        mMonthAndDayView.setOnClickListener(this);
+        mMonthAndDayViewEnd.setOnClickListener(this);
+
+        mSelectedMonthTextView = (TextView) view.findViewById(R.id.date_picker_month);
+        mSelectedMonthTextViewEnd = (TextView) view.findViewById(R.id.date_picker_month_end);
+
+        mSelectedDayTextView = (TextView) view.findViewById(R.id.date_picker_day);
+        mSelectedDayTextViewEnd = (TextView) view.findViewById(R.id.date_picker_day_end);
+
+        mYearView = (TextView) view.findViewById(R.id.date_picker_year);
+        mYearViewEnd = (TextView) view.findViewById(R.id.date_picker_year_end);
+        mYearView.setOnClickListener(this);
+        mYearViewEnd.setOnClickListener(this);
+
+        mDurationView = (LinearLayout) view.findViewById(R.id.date_picker_duration_layout);
+        if(!mShowDuration) {
+            mDurationView.setVisibility(View.GONE);
+        }
+        mDurationView.setOnClickListener(this);
+        mDurationTextView = (TextView) view.findViewById(R.id.date_picker_duration_days);
+        mDurationEditText = (EditText) view.findViewById(R.id.date_picker_duration_days_et);
+        // disable soft keyboard popup when edittext is selected
+        mDurationEditText.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        mDurationEditText.setTextIsSelectable(true);
+        mDurationDayTextView = (TextView) view.findViewById(R.id.tv_duration_day);
+        mDurationArrow = (TextView) view.findViewById(R.id.arrow_start);
+        mDurationArrow.setOnClickListener(this);
+        mDurationArrowEnd = (TextView) view.findViewById(R.id.arrow_end);
+        mDurationArrowEnd.setOnClickListener(this);
+
+        viewList = new ArrayList<>();
+        viewList.add(MONTH_AND_DAY_VIEW, mMonthAndDayView);
+        viewList.add(YEAR_VIEW, mYearView);
+        viewList.add(MONTH_AND_DAY_VIEW_END, mMonthAndDayViewEnd);
+        viewList.add(YEAR_VIEW_END, mYearViewEnd);
+        viewList.add(DURATION_VIEW, mDurationView);
 
         final Activity activity = getActivity();
         mDayPickerView = new SimpleDayPickerView(activity, this);
@@ -780,6 +789,10 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
             mDayPickerView.onChange();
             mDayPickerViewEnd.onChange();
         }
+    }
+
+    public void setShowDuration(boolean showDuration) {
+        this.mShowDuration = showDuration;
     }
 
     /**

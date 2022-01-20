@@ -6,6 +6,15 @@
     tools:context=".MainActivity">
 
     <Switch
+        android:id="@+id/switch_show_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Shows duration"
+        android:checked="false"
+        />
+
+    <Switch
         android:id="@+id/switch_dark_theme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
