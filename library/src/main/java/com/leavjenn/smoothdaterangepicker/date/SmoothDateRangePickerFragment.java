@@ -396,6 +396,7 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
         }
 
         mAnimator = (AccessibleDateAnimator) view.findViewById(R.id.animator);
+        mAnimator.setBackgroundColor(activity.getResources().getColor(bgColorResource));
 
         mAnimator.addView(mDayPickerView);
         mAnimator.addView(mYearPickerView);

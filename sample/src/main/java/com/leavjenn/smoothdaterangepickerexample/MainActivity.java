@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.leavjenn.smoothdaterangepicker.date.SmoothDateRangePickerFragment;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tvDateRange = (TextView) findViewById(R.id.tv_date_range);
         tvDate = (TextView) findViewById(R.id.tv_date);
+
         Button btnDateRange = (Button) findViewById(R.id.btn_date_range_picker);
         btnDateRange.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
                                         tvDateRange.setText(date);
                                     }
                                 });
+
+                boolean isThemeDark = ((Switch) findViewById(R.id.switch_dark_theme)).isChecked();
+                smoothDateRangePickerFragment.setThemeDark(isThemeDark);
                 smoothDateRangePickerFragment.show(getFragmentManager(), "Datepickerdialog");
             }
         });

@@ -5,6 +5,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Switch
+        android:id="@+id/switch_dark_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Dark theme"
+        android:checked="false"
+        />
+
     <Button
         android:id="@+id/btn_date_range_picker"
         android:layout_width="wrap_content"
