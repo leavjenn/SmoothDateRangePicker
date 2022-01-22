@@ -52,6 +52,15 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
 
+                final Calendar cMin = Calendar.getInstance();
+                cMin.set(1999, 0, 1);
+                smoothDateRangePickerFragment.setMinDate(cMin);  // 1999/01/01
+
+                final Calendar cMax = Calendar.getInstance();
+                cMax.set(Calendar.MONTH, 11);
+                cMax.set(Calendar.DAY_OF_MONTH, 31);
+                smoothDateRangePickerFragment.setMaxDate(cMax);  // last day of current year
+
                 boolean isThemeDark = ((Switch) findViewById(R.id.switch_dark_theme)).isChecked();
                 smoothDateRangePickerFragment.setThemeDark(isThemeDark);
 
