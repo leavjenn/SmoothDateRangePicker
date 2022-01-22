@@ -32,7 +32,7 @@
         <!--android:layout_height="wrap_content"-->
         <!--android:orientation="vertical">-->
 
-        <include layout="@layout/sdrp_selected_date" />
+        <include android:id="@+id/sdrp_selected_date_start" layout="@layout/sdrp_selected_date" />
 
         <View
             android:id="@+id/hyphen"
@@ -50,7 +50,7 @@
         <!--android:layout_height="wrap_content"-->
         <!--android:orientation="vertical">-->
 
-        <include layout="@layout/sdrp_selected_date_end" />
+        <include android:id="@+id/sdrp_selected_date_end" layout="@layout/sdrp_selected_date" />
 
     </LinearLayout>
 
