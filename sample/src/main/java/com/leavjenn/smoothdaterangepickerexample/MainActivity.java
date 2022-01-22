@@ -1,6 +1,7 @@
 package com.leavjenn.smoothdaterangepickerexample;
 
 import android.app.DatePickerDialog;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -26,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onCreateDateRange()
     {
-        final TextView tvDateRange = (TextView) findViewById(R.id.tv_date_range);
+        final String pickerFragmentTag = "Datepickerdialog";
+
         final Button btnDateRange = (Button) findViewById(R.id.btn_date_range_picker);
         btnDateRange.setOnClickListener(new View.OnClickListener()
         {
@@ -43,11 +45,10 @@ public class MainActivity extends AppCompatActivity {
                                                        int dayStart, int yearEnd,
                                                        int monthEnd, int dayEnd)
                             {
-                                String date = "You picked the following date range: \n"
-                                        + "From " + dayStart + "/" + (++monthStart)
-                                        + "/" + yearStart + " To " + dayEnd + "/"
-                                        + (++monthEnd) + "/" + yearEnd;
-                                tvDateRange.setText(date);
+                                onActivityDateRangeSet(view,
+                                                       yearStart, monthStart,
+                                                       dayStart, yearEnd,
+                                                       monthEnd, dayEnd);
                             }
                         });
 
@@ -57,9 +58,40 @@ public class MainActivity extends AppCompatActivity {
                 boolean showDuration = ((Switch) findViewById(R.id.switch_show_duration)).isChecked();
                 smoothDateRangePickerFragment.setShowDuration(showDuration);
 
-                smoothDateRangePickerFragment.show(getFragmentManager(), "Datepickerdialog");
+                smoothDateRangePickerFragment.show(getFragmentManager(), pickerFragmentTag);
             }
         });
+
+        Fragment fragment = getFragmentManager().findFragmentByTag(pickerFragmentTag);
+        if (fragment != null) {
+            // Means that activity and picker have been re-created (following screen rotation)
+            // So picker has loose its listener, so must set it again
+            SmoothDateRangePickerFragment pickerFragment = (SmoothDateRangePickerFragment)fragment;
+            pickerFragment.setOnDateSetListener(new SmoothDateRangePickerFragment.OnDateRangeSetListener() {
+                @Override
+                public void onDateRangeSet(SmoothDateRangePickerFragment view,
+                                           int yearStart, int monthStart, int dayStart,
+                                           int yearEnd, int monthEnd, int dayEnd)
+                {
+                    onActivityDateRangeSet(view,
+                                           yearStart, monthStart, dayStart,
+                                           yearEnd, monthEnd, dayEnd);
+                }
+            });
+        }
+    }
+
+    protected void onActivityDateRangeSet(SmoothDateRangePickerFragment view,
+                                  int yearStart, int monthStart,
+                                  int dayStart, int yearEnd,
+                                  int monthEnd, int dayEnd)
+    {
+        final TextView tvDateRange = (TextView) findViewById(R.id.tv_date_range);
+        String date = "You picked the following date range: \n"
+                + "From " + dayStart + "/" + (++monthStart)
+                + "/" + yearStart + " To " + dayEnd + "/"
+                + (++monthEnd) + "/" + yearEnd;
+        tvDateRange.setText(date);
     }
 
     protected void onCreateDate()
