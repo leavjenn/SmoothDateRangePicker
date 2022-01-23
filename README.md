@@ -11,18 +11,17 @@ Date Range Picker | Duration Number Pad | Date Range Picker Dark Theme | Date Ra
 
 **Gradle:**
 
-Add google repository into project `build.gradle`:
+Add jitpack repository into project `build.gradle`:
 ```
 repositories {
-    google()
-    jcenter()
+    maven { url "https://jitpack.io" }
 }
 ```
 
 Add the following into app `build.gradle`:
 ```
 dependencies {
-  compile 'com.wsbak.smoothdaterangepicker:library:0.2.0'
+  implementation 'com.github.wsbak:SmoothDateRangePicker:master-SNAPSHOT'
 }
 ```
 
