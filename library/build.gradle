@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
 
 android {
     compileSdkVersion 31
@@ -103,26 +102,3 @@ version = libraryVersion
 //        }
 //    }
 //}
-
-// bintray
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
-    configurations = ['archives']
-    pkg {
-        repo = 'maven'
-        name = libraryName
-        desc = libraryDescription
-        vcsUrl = gitUrl
-        websiteUrl = siteUrl
-        licenses = allLicenses
-        publish = true
-        publicDownloadNumbers = true
-        version {
-            name = libraryVersion
-            desc = libraryDescription
-        }
-    }
-}
