@@ -1,4 +1,6 @@
 # SmoothDateRangePicker
+Based on [SmoothDateRangePicker by leavjenn] (https://github.com/leavjenn/SmoothDateRangePicker)
+
 Smooth Date Range Picker is an android widget for selecting date range quickly and easily, following Material Design principle. This library is based on [datetimepicker from Android frameworks](https://android.googlesource.com/platform/frameworks/opt/datetimepicker/) and [Material DateTime Picker by wdullaer](https://github.com/wdullaer/MaterialDateTimePicker).
 
 Date Range Picker | Duration Number Pad | Date Range Picker Dark Theme | Date Range Picker Landscape
@@ -9,9 +11,10 @@ Date Range Picker | Duration Number Pad | Date Range Picker Dark Theme | Date Ra
 
 **Gradle:**
 
-Add jcenter repository into project `build.gradle`:
+Add google repository into project `build.gradle`:
 ```
 repositories {
+    google()
     jcenter()
 }
 ```
@@ -19,7 +22,7 @@ repositories {
 Add the following into app `build.gradle`:
 ```
 dependencies {
-  compile 'com.leavjenn.smoothdaterangepicker:library:0.2.0'
+  compile 'com.wsbak.smoothdaterangepicker:library:0.2.0'
 }
 ```
 
@@ -49,9 +52,8 @@ SmoothDateRangePickerFragment smoothDateRangePickerFragment = SmoothDateRangePic
 new SmoothDateRangePickerFragment.OnDateRangeSetListener() {
                     @Override
                     public void onDateRangeSet(SmoothDateRangePickerFragment view,
-                                               int yearStart, int monthStart,
-                                               int dayStart, int yearEnd,
-                                               int monthEnd, int dayEnd) {
+                                               int yearStart, int monthStart, int dayStart,
+                                               int yearEnd, int monthEnd, int dayEnd) {
                         // grab the date range, do what you want
                     }
                 });
@@ -80,6 +82,12 @@ smoothDateRangePickerFragment.show(getFragmentManager(), "smoothDateRangePicker"
 **Set selectable max date:**
 
 `setMaxDate(Calendar calendar)`
+
+
+### Duration
+**Hide duration:**
+
+`setShowDuration(false)`
 
 
 ## License

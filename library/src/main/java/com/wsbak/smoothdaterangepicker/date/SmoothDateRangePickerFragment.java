@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.leavjenn.smoothdaterangepicker.date;
+package com.wsbak.smoothdaterangepicker.date;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
@@ -40,10 +40,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.leavjenn.smoothdaterangepicker.HapticFeedbackController;
-import com.leavjenn.smoothdaterangepicker.R;
-import com.leavjenn.smoothdaterangepicker.TypefaceHelper;
-import com.leavjenn.smoothdaterangepicker.Utils;
+import com.wsbak.smoothdaterangepicker.HapticFeedbackController;
+import com.wsbak.smoothdaterangepicker.R;
+import com.wsbak.smoothdaterangepicker.TypefaceHelper;
+import com.wsbak.smoothdaterangepicker.Utils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

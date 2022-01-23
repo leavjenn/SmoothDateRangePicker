@@ -1,4 +1,4 @@
-package com.leavjenn.smoothdaterangepickerexample;
+package com.wsbak.smoothdaterangepickerexample;
 
 import android.app.DatePickerDialog;
 import android.app.Fragment;
@@ -10,7 +10,7 @@ import android.widget.DatePicker;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.leavjenn.smoothdaterangepicker.date.SmoothDateRangePickerFragment;
+import com.wsbak.smoothdaterangepicker.date.SmoothDateRangePickerFragment;
 
 import java.util.Calendar;
 

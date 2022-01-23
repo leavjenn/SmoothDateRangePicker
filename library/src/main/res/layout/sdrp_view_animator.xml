@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.leavjenn.smoothdaterangepicker.date.AccessibleDateAnimator
+<com.wsbak.smoothdaterangepicker.date.AccessibleDateAnimator
      xmlns:android="http://schemas.android.com/apk/res/android"
      android:id="@+id/animator"
      android:layout_width="@dimen/mdtp_date_picker_component_width"

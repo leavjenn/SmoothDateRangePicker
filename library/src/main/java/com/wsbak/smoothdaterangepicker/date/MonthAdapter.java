@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.leavjenn.smoothdaterangepicker.date;
+package com.wsbak.smoothdaterangepicker.date;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

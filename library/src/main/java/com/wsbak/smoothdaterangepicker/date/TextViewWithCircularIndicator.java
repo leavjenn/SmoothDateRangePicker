@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.leavjenn.smoothdaterangepicker.date;
+package com.wsbak.smoothdaterangepicker.date;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -28,7 +28,7 @@ import androidx.annotation.NonNull;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-import com.leavjenn.smoothdaterangepicker.R;
+import com.wsbak.smoothdaterangepicker.R;
 
 /**
  * A text view which, when pressed or activated, displays a colored circle around the text.

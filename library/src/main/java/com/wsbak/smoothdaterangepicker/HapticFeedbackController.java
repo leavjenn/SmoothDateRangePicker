@@ -1,4 +1,4 @@
-package com.leavjenn.smoothdaterangepicker;
+package com.wsbak.smoothdaterangepicker;
 
 import android.app.Service;
 import android.content.Context;

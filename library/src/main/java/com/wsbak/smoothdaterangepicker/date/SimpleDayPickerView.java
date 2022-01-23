@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.leavjenn.smoothdaterangepicker.date;
+package com.wsbak.smoothdaterangepicker.date;
 
 import android.content.Context;
 import android.util.AttributeSet;

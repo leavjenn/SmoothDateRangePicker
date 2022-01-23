@@ -1,4 +1,4 @@
-package com.leavjenn.smoothdaterangepickerexample;
+package com.wsbak.smoothdaterangepickerexample;
 
 import org.junit.Test;
 

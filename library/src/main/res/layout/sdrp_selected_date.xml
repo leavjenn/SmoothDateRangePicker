@@ -23,7 +23,7 @@
     android:orientation="vertical"
     android:padding="20dp">
 
-    <com.leavjenn.smoothdaterangepicker.AccessibleLinearLayout
+    <com.wsbak.smoothdaterangepicker.AccessibleLinearLayout
         android:id="@+id/date_picker_month_and_day"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
             tools:text="Wednesday" />
 
 
-        <com.leavjenn.smoothdaterangepicker.AccessibleLinearLayout
+        <com.wsbak.smoothdaterangepicker.AccessibleLinearLayout
             android:id="@+id/date_picker_month_and_day1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,11 +78,11 @@
                 android:textColor="@color/sdrp_selector"
                 android:textSize="22sp"
                 tools:text="15" />
-        </com.leavjenn.smoothdaterangepicker.AccessibleLinearLayout>
+        </com.wsbak.smoothdaterangepicker.AccessibleLinearLayout>
 
-    </com.leavjenn.smoothdaterangepicker.AccessibleLinearLayout>
+    </com.wsbak.smoothdaterangepicker.AccessibleLinearLayout>
 
-    <com.leavjenn.smoothdaterangepicker.AccessibleTextView
+    <com.wsbak.smoothdaterangepicker.AccessibleTextView
         android:id="@+id/date_picker_year"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

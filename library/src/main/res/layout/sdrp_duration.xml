@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.leavjenn.smoothdaterangepicker.AccessibleLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.wsbak.smoothdaterangepicker.AccessibleLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/date_picker_duration_layout"
     android:layout_width="match_parent"
@@ -64,4 +64,4 @@
         android:text="&gt;"
         android:textSize="20sp"
         />
-</com.leavjenn.smoothdaterangepicker.AccessibleLinearLayout>
+</com.wsbak.smoothdaterangepicker.AccessibleLinearLayout>

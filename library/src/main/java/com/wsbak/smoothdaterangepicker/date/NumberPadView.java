@@ -1,4 +1,4 @@
-package com.leavjenn.smoothdaterangepicker.date;
+package com.wsbak.smoothdaterangepicker.date;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 
-import com.leavjenn.smoothdaterangepicker.R;
+import com.wsbak.smoothdaterangepicker.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;

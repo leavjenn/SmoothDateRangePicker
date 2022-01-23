@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.leavjenn.smoothdaterangepicker.date;
+package com.wsbak.smoothdaterangepicker.date;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -32,8 +32,8 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 
-import com.leavjenn.smoothdaterangepicker.Utils;
-import com.leavjenn.smoothdaterangepicker.date.SmoothDateRangePickerFragment.OnDateChangedListener;
+import com.wsbak.smoothdaterangepicker.Utils;
+import com.wsbak.smoothdaterangepicker.date.SmoothDateRangePickerFragment.OnDateChangedListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

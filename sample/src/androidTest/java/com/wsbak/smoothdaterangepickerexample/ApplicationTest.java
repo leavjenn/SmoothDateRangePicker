@@ -1,4 +1,4 @@
-package com.leavjenn.smoothdaterangepickerexample;
+package com.wsbak.smoothdaterangepickerexample;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

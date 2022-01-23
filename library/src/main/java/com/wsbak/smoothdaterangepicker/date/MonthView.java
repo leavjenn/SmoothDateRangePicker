@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.leavjenn.smoothdaterangepicker.date;
+package com.wsbak.smoothdaterangepicker.date;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -37,9 +37,9 @@ import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 
-import com.leavjenn.smoothdaterangepicker.R;
-import com.leavjenn.smoothdaterangepicker.TypefaceHelper;
-import com.leavjenn.smoothdaterangepicker.date.MonthAdapter.CalendarDay;
+import com.wsbak.smoothdaterangepicker.R;
+import com.wsbak.smoothdaterangepicker.TypefaceHelper;
+import com.wsbak.smoothdaterangepicker.date.MonthAdapter.CalendarDay;
 
 import java.security.InvalidParameterException;
 import java.util.Calendar;
