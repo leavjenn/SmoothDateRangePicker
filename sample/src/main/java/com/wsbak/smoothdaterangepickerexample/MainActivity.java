@@ -41,14 +41,10 @@ public class MainActivity extends AppCompatActivity {
                         {
                             @Override
                             public void onDateRangeSet(SmoothDateRangePickerFragment view,
-                                                       int yearStart, int monthStart,
-                                                       int dayStart, int yearEnd,
-                                                       int monthEnd, int dayEnd)
+                                                       Calendar calendarStart,
+                                                       Calendar calendarEnd)
                             {
-                                onActivityDateRangeSet(view,
-                                                       yearStart, monthStart,
-                                                       dayStart, yearEnd,
-                                                       monthEnd, dayEnd);
+                                onActivityDateRangeSet(view, calendarStart, calendarEnd);
                             }
                         });
 
@@ -67,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
                 boolean showDuration = ((Switch) findViewById(R.id.switch_show_duration)).isChecked();
                 smoothDateRangePickerFragment.setShowDuration(showDuration);
 
+                boolean showDateEnableDisable = ((Switch) findViewById(R.id.switch_show_date_enable_disable)).isChecked();
+                smoothDateRangePickerFragment.setShowDateEnableDisable(showDateEnableDisable);
+
                 smoothDateRangePickerFragment.show(getFragmentManager(), pickerFragmentTag);
             }
         });
@@ -79,28 +78,40 @@ public class MainActivity extends AppCompatActivity {
             pickerFragment.setOnDateSetListener(new SmoothDateRangePickerFragment.OnDateRangeSetListener() {
                 @Override
                 public void onDateRangeSet(SmoothDateRangePickerFragment view,
-                                           int yearStart, int monthStart, int dayStart,
-                                           int yearEnd, int monthEnd, int dayEnd)
+                                           Calendar calendarStart,
+                                           Calendar calendarEnd)
                 {
-                    onActivityDateRangeSet(view,
-                                           yearStart, monthStart, dayStart,
-                                           yearEnd, monthEnd, dayEnd);
+                    onActivityDateRangeSet(view, calendarStart, calendarEnd);
                 }
             });
         }
     }
 
     protected void onActivityDateRangeSet(SmoothDateRangePickerFragment view,
-                                  int yearStart, int monthStart,
-                                  int dayStart, int yearEnd,
-                                  int monthEnd, int dayEnd)
+                                          Calendar calendarStart,
+                                          Calendar calendarEnd)
     {
-        final TextView tvDateRange = (TextView) findViewById(R.id.tv_date_range);
-        String date = "You picked the following date range: \n"
-                + "From " + dayStart + "/" + (++monthStart)
-                + "/" + yearStart + " To " + dayEnd + "/"
-                + (++monthEnd) + "/" + yearEnd;
+        String date;
+        if (calendarStart == null && calendarEnd == null) {
+            date = "No date enabled !";  // impossible case
+        } else {
+            date = "You picked the following date range: \n"
+                    + "From " + formatDate(calendarStart)
+                    + " To " + formatDate(calendarEnd);
+        }
+
+        final TextView tvDateRange = findViewById(R.id.tv_date_range);
         tvDateRange.setText(date);
+    }
+
+    private static String formatDate(Calendar calendar) {
+        if (calendar != null) {
+            return calendar.get(Calendar.YEAR) + "/" +
+                    (calendar.get(Calendar.MONTH) + 1) + "/" +
+                    calendar.get(Calendar.DAY_OF_MONTH);
+        } else {
+            return "...";
+        }
     }
 
     protected void onCreateDate()

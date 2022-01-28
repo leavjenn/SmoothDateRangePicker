@@ -15,6 +15,15 @@
         />
 
     <Switch
+        android:id="@+id/switch_show_date_enable_disable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Shows date enable/disable switch"
+        android:checked="false"
+        />
+
+    <Switch
         android:id="@+id/switch_dark_theme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

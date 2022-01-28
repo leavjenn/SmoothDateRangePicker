@@ -15,6 +15,7 @@
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/day_picker_selected_date_layout"
     android:layout_width="@dimen/mdtp_date_picker_component_width_half"
     android:layout_height="wrap_content"
@@ -92,5 +93,19 @@
         android:textColor="@color/sdrp_selector"
         android:textSize="@dimen/mdtp_selected_date_year_size"
         tools:text="2015" />
+
+    <!-- saveEnabled="false" because fragment restore data of views with id
+          and 2 views have the same id (this layout is inflated twice)
+          so the same value is restored on both views
+     -->
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/date_picker_enable"
+        android:saveEnabled="false"
+        android:checked="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:useMaterialThemeColors="false"
+        style="@style/DateSwitchStyle"
+        />
 
 </LinearLayout>

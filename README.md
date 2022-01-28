@@ -51,9 +51,10 @@ SmoothDateRangePickerFragment smoothDateRangePickerFragment = SmoothDateRangePic
 new SmoothDateRangePickerFragment.OnDateRangeSetListener() {
                     @Override
                     public void onDateRangeSet(SmoothDateRangePickerFragment view,
-                                               int yearStart, int monthStart, int dayStart,
-                                               int yearEnd, int monthEnd, int dayEnd) {
+                                               Calendar calendarStart,
+                                               Calendar calendarEnd) {
                         // grab the date range, do what you want
+                        // calendarStart or calendarEnd can be null if user disable it
                     }
                 });
                 
@@ -81,6 +82,12 @@ smoothDateRangePickerFragment.show(getFragmentManager(), "smoothDateRangePicker"
 **Set selectable max date:**
 
 `setMaxDate(Calendar calendar)`
+
+
+### Enable Date
+**Show disable/enable date control:**
+
+`setShowDateEnableDisable(true)`
 
 
 ### Duration
