@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'maven-publish'
 
 android {
     compileSdkVersion 31
@@ -67,6 +68,25 @@ ext {
 
 group = publishedGroupId
 version = libraryVersion
+
+def artifactId = artifact
+def groupId = publishedGroupId
+
+// https://medium.com/android-news/android-local-libraries-with-maven-b7456d4268cf
+// Gradle / library / Tasks / publishing / publishToMavenLocal
+project.afterEvaluate {
+    publishing {
+        publications {
+            library(MavenPublication) {
+                setGroupId groupId
+                setArtifactId artifactId
+                version android.defaultConfig.versionName
+
+                artifact bundleReleaseAar
+            }
+        }
+    }
+}
 
 //install {
 //    repositories.mavenInstaller {
