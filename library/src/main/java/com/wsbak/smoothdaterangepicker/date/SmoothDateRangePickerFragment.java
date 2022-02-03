@@ -356,10 +356,10 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
 
     private int mDuration;
 
-    private boolean mThemeDark;
+    private boolean mThemeDark = false;
     private int mAccentColor = -1;
-    private boolean mVibrate;
-    private boolean mDismissOnPause;
+    private boolean mVibrate = true;
+    private boolean mDismissOnPause = false;
 
     private HapticFeedbackController mHapticFeedbackController;
 
@@ -401,44 +401,16 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
     }
 
     /**
-     * @param callBack    How the parent is notified that the date is set.
-     * @param year        The initial year of the dialog.
-     * @param monthOfYear The initial month of the dialog.
-     * @param dayOfMonth  The initial day of the dialog.
-     */
-    public static SmoothDateRangePickerFragment newInstance(OnDateRangeSetListener callBack, int year,
-                                                    int monthOfYear,
-                                                    int dayOfMonth) {
-        SmoothDateRangePickerFragment ret = new SmoothDateRangePickerFragment();
-        ret.initialize(callBack, year, monthOfYear, dayOfMonth);
-        return ret;
-    }
-
-    /**
      * @param callBack How the parent is notified that the date is set.
      *                 the initial date is set to today
      */
     public static SmoothDateRangePickerFragment newInstance(OnDateRangeSetListener callBack) {
         SmoothDateRangePickerFragment ret = new SmoothDateRangePickerFragment();
+        ret.mCallBack = callBack;
         Calendar todayCal = Calendar.getInstance();
-        ret.initialize(callBack, todayCal.get(Calendar.YEAR), todayCal.get(Calendar.MONTH),
-                todayCal.get(Calendar.DAY_OF_MONTH));
+        ret.setStartDate(todayCal);
+        ret.setEndDate(todayCal);
         return ret;
-    }
-
-    public void initialize(OnDateRangeSetListener callBack, int year, int monthOfYear, int dayOfMonth) {
-        mCallBack = callBack;
-        mDateStart.mCalendar.set(Calendar.YEAR, year);
-        mDateStart.mCalendar.set(Calendar.MONTH, monthOfYear);
-        mDateStart.mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        mDateEnd.mCalendar.set(Calendar.YEAR, year);
-        mDateEnd.mCalendar.set(Calendar.MONTH, monthOfYear);
-        mDateEnd.mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-
-        mThemeDark = false;
-        mAccentColor = -1;
-        mVibrate = true;
-        mDismissOnPause = false;
     }
 
     @Override
@@ -880,6 +852,52 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
         mMaxYear = endYear;
         mDateStart.onChange();
         mDateEnd.onChange();
+    }
+
+    /**
+     * Sets the default selected start date
+     * Must be coherent with MinDate & MaxDate
+     *
+     * @param calendar a Calendar object set to the year, month, day desired as the selected start date.
+     */
+    public void setStartDate(Calendar calendar) {
+        if (calendar.before(mMinDate)) {
+            throw new IllegalArgumentException("calendar must be >= mMinDate");
+        }
+        if (calendar.after(mMaxDate)) {
+            throw new IllegalArgumentException("calendar must be <= mMaxDate");
+        }
+
+        mDateStart.mCalendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR));
+        mDateStart.mCalendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH));
+        mDateStart.mCalendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH));
+
+        if (mDateEnd.mCalendar.before(mDateStart.mCalendar)) {
+            setEndDate(mDateStart.mCalendar);
+        }
+    }
+
+    /**
+     * Sets the default selected end date
+     * Must be coherent with MinDate & MaxDate
+     *
+     * @param calendar a Calendar object set to the year, month, day desired as the selected end date.
+     */
+    public void setEndDate(Calendar calendar) {
+        if (calendar.before(mMinDate)) {
+            throw new IllegalArgumentException("calendar must be >= mMinDate");
+        }
+        if (calendar.after(mMaxDate)) {
+            throw new IllegalArgumentException("calendar must be <= mMaxDate");
+        }
+
+        mDateEnd.mCalendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR));
+        mDateEnd.mCalendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH));
+        mDateEnd.mCalendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH));
+
+        if (mDateStart.mCalendar.after(mDateEnd.mCalendar)) {
+            setStartDate(mDateEnd.mCalendar);
+        }
     }
 
     /**

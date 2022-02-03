@@ -57,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
                 cMax.set(Calendar.DAY_OF_MONTH, 31);
                 smoothDateRangePickerFragment.setMaxDate(cMax);  // last day of current year
 
+                final Calendar cStart = Calendar.getInstance();
+                cStart.add(Calendar.DAY_OF_MONTH, -3);
+                smoothDateRangePickerFragment.setStartDate(cStart);
+
+                final Calendar cEnd = Calendar.getInstance();
+                cEnd.add(Calendar.DAY_OF_MONTH, +1);
+                smoothDateRangePickerFragment.setEndDate(cEnd);
+
                 boolean isThemeDark = ((Switch) findViewById(R.id.switch_dark_theme)).isChecked();
                 smoothDateRangePickerFragment.setThemeDark(isThemeDark);
 

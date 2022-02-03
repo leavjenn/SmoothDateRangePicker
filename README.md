@@ -35,12 +35,6 @@ SmoothDateRangePickerFragment.newInstance(SmoothDateRangePickerFragment.OnDateRa
 ```
 
 
-**Instantiation, specify the default selected date:**
-```
-SmoothDateRangePickerFragment.newInstance(SmoothDateRangePickerFragment.OnDateRangeSetListener callBack, 
-int year, int monthOfYear, int dayOfMonth)
-```
-
 After instantiation, remember to call
 
 `show (FragmentManager manager, String tag)`
@@ -83,8 +77,16 @@ smoothDateRangePickerFragment.show(getFragmentManager(), "smoothDateRangePicker"
 
 `setMaxDate(Calendar calendar)`
 
+**Set the default selected start date:**
 
-### Enable Date
+`setStartDate(Calendar calendar)`
+
+**Set the default selected end date:**
+
+`setEndDate(Calendar calendar)`
+
+
+### Disable/Enable Date
 **Show disable/enable date control:**
 
 `setShowDateEnableDisable(true)`
