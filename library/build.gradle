@@ -9,7 +9,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 31
         versionCode 4
-        versionName "0.4.0"
+        versionName "0.4.1"
     }
     buildTypes {
         release {
@@ -55,7 +55,7 @@ ext {
     siteUrl = 'https://github.com/wsbak/SmoothDateRangePicker'
     gitUrl = 'https://github.com/wsbak/SmoothDateRangePicker.git'
 
-    libraryVersion = '0.4.0'
+    libraryVersion = '0.4.1'
 
     developerId = 'wsbak'
     developerName = 'wsbak'

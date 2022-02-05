@@ -156,6 +156,7 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
             mYearPickerView = new YearPickerView(activity, mFragment);
 
             mDateEnabledView = view.findViewById(R.id.date_picker_enable);
+            mDateEnabledView.setChecked(mDateEnabledAtBeginning);
             mDateEnabledView.setOnClickListener(this);
 
             loadInstanceState(savedInstanceState);
@@ -193,7 +194,6 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
         {
             if (!mShowDateEnableDisable) {
                 mDateEnabledView.setVisibility(View.GONE);
-                return;
             }
 
             if (!mDateEnabledView.isChecked())
@@ -280,6 +280,7 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
         private DayPickerView mDayPickerView;
         private YearPickerView mYearPickerView;
         SwitchMaterial mDateEnabledView;
+        private boolean mDateEnabledAtBeginning = true;
         private boolean mShowDateEnableDisable = false;
 
         private static final String KEY_SELECTED_YEAR = "selected_year";
@@ -960,6 +961,20 @@ public class SmoothDateRangePickerFragment extends DialogFragment implements OnC
     public void setShowDateEnableDisable(boolean show) {
         mDateStart.mShowDateEnableDisable = show;
         mDateEnd.mShowDateEnableDisable = show;
+    }
+
+    public void enableStartDate(boolean enable) {
+        if (!enable && !mDateEnd.mDateEnabledAtBeginning) {
+            throw new IllegalArgumentException("1 date must be enabled");
+        }
+        mDateStart.mDateEnabledAtBeginning = enable;
+    }
+
+    public void enableEndDate(boolean enable) {
+        if (!enable && !mDateStart.mDateEnabledAtBeginning) {
+            throw new IllegalArgumentException("1 date must be enabled");
+        }
+        mDateEnd.mDateEnabledAtBeginning = enable;
     }
 
 

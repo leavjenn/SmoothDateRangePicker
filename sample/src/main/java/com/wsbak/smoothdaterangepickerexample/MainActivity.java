@@ -25,6 +25,20 @@ public class MainActivity extends AppCompatActivity {
         onCreateDate();
     }
 
+    public void onEnableDateClick(View view)
+    {
+        final Switch startDateEnable = (Switch) findViewById(R.id.switch_enable_start_date);
+        final Switch endDateEnable = (Switch) findViewById(R.id.switch_enable_end_date);
+        if (!startDateEnable.isChecked() && !endDateEnable.isChecked()) {
+            // 1 date must be enable, so enable the other one
+            if (view == startDateEnable) {
+                endDateEnable.setChecked(true);
+            } else {
+                startDateEnable.setChecked(true);
+            }
+        }
+    }
+
     protected void onCreateDateRange()
     {
         final String pickerFragmentTag = "Datepickerdialog";
@@ -65,14 +79,20 @@ public class MainActivity extends AppCompatActivity {
                 cEnd.add(Calendar.DAY_OF_MONTH, +1);
                 smoothDateRangePickerFragment.setEndDate(cEnd);
 
-                boolean isThemeDark = ((Switch) findViewById(R.id.switch_dark_theme)).isChecked();
+                final boolean isThemeDark = ((Switch) findViewById(R.id.switch_dark_theme)).isChecked();
                 smoothDateRangePickerFragment.setThemeDark(isThemeDark);
 
-                boolean showDuration = ((Switch) findViewById(R.id.switch_show_duration)).isChecked();
+                final boolean showDuration = ((Switch) findViewById(R.id.switch_show_duration)).isChecked();
                 smoothDateRangePickerFragment.setShowDuration(showDuration);
 
-                boolean showDateEnableDisable = ((Switch) findViewById(R.id.switch_show_date_enable_disable)).isChecked();
+                final boolean showDateEnableDisable = ((Switch) findViewById(R.id.switch_show_date_enable_disable)).isChecked();
                 smoothDateRangePickerFragment.setShowDateEnableDisable(showDateEnableDisable);
+
+                final boolean startDateEnable = ((Switch) findViewById(R.id.switch_enable_start_date)).isChecked();
+                smoothDateRangePickerFragment.enableStartDate(startDateEnable);
+
+                final boolean endDateEnable = ((Switch) findViewById(R.id.switch_enable_end_date)).isChecked();
+                smoothDateRangePickerFragment.enableEndDate(endDateEnable);
 
                 smoothDateRangePickerFragment.show(getFragmentManager(), pickerFragmentTag);
             }

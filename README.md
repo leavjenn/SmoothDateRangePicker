@@ -21,7 +21,7 @@ repositories {
 Add the following into app `build.gradle`:
 ```
 dependencies {
-  implementation 'com.github.wsbak:SmoothDateRangePicker:master-SNAPSHOT'
+  implementation 'com.github.wsbak:SmoothDateRangePicker:0.4.1'
 }
 ```
 
@@ -90,6 +90,14 @@ smoothDateRangePickerFragment.show(getFragmentManager(), "smoothDateRangePicker"
 **Show disable/enable date control:**
 
 `setShowDateEnableDisable(true)`
+
+**Disable start date:**
+
+`enableStartDate(false)`
+
+**Disable end date:**
+
+`enableEndDate(false)`
 
 
 ### Duration
