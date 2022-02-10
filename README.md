@@ -5,7 +5,11 @@ Smooth Date Range Picker is an android widget for selecting date range quickly a
 
 Date Range Picker | Duration Number Pad | Date Range Picker Dark Theme | Date Range Picker Landscape
 ---- | ----| ----| ----
-![Date Range Picker](https://raw.githubusercontent.com/leavjenn/SmoothDateRangePicker/gh-pages/screenshots/date_range_picker.png) | ![Duration Number Pad](https://raw.githubusercontent.com/leavjenn/SmoothDateRangePicker/gh-pages/screenshots/date_duration_number_pad.png) | ![Date Range Picker Dark Theme](https://raw.githubusercontent.com/leavjenn/SmoothDateRangePicker/gh-pages/screenshots/date_range_picker_dark_theme.png) | ![Date Range Picker Landscape](https://raw.githubusercontent.com/leavjenn/SmoothDateRangePicker/gh-pages/screenshots/date_range_picker_landscape.png)
+![Date Range Picker](https://raw.githubusercontent.com/wsbak/SmoothDateRangePicker/gh-pages/screenshots/date_range_picker.png) | ![Duration Number Pad](https://raw.githubusercontent.com/wsbak/SmoothDateRangePicker/gh-pages/screenshots/date_duration_number_pad.png) | ![Date Range Picker Dark Theme](https://raw.githubusercontent.com/wsbak/SmoothDateRangePicker/gh-pages/screenshots/date_range_picker_dark_theme.png) | ![Date Range Picker Landscape](https://raw.githubusercontent.com/wsbak/SmoothDateRangePicker/gh-pages/screenshots/date_range_picker_landscape.png)
+
+Date Disable Enable Controls | Start Date Disabled | End Date Disabled | End Date Disabled Landscape Dark Theme
+---- | ----| ----| ----
+![Date Disable Enable Controls](https://raw.githubusercontent.com/wsbak/SmoothDateRangePicker/gh-pages/screenshots/Date_disable_enable_controls.png) | ![Start Date Disabled](https://raw.githubusercontent.com/wsbak/SmoothDateRangePicker/gh-pages/screenshots/Start_date_disabled.png) | ![End Date Disabled](https://raw.githubusercontent.com/wsbak/SmoothDateRangePicker/gh-pages/screenshots/End_date_disabled.png) | ![End Date Disabled Landscape Dark Theme](https://raw.githubusercontent.com/wsbak/SmoothDateRangePicker/gh-pages/screenshots/End_date_disabled_landscape_dark_theme.png)
 
 ## Setup
 
