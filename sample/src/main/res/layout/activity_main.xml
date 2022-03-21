@@ -5,6 +5,58 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <Switch
+        android:id="@+id/switch_show_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Shows duration"
+        android:checked="true"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        >
+        <Switch
+            android:id="@+id/switch_show_date_enable_disable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Shows date enable/disable"
+            android:checked="true"
+            />
+        <Switch
+            android:id="@+id/switch_enable_start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Start"
+            android:checked="true"
+            android:onClick="onEnableDateClick"
+            />
+        <Switch
+            android:id="@+id/switch_enable_end_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="End"
+            android:checked="true"
+            android:onClick="onEnableDateClick"
+            />
+
+    </LinearLayout>
+
+    <Switch
+        android:id="@+id/switch_dark_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Dark theme"
+        android:checked="false"
+        />
+
     <Button
         android:id="@+id/btn_date_range_picker"
         android:layout_width="wrap_content"

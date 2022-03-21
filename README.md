@@ -1,25 +1,31 @@
 # SmoothDateRangePicker
+Based on [SmoothDateRangePicker by leavjenn] (https://github.com/leavjenn/SmoothDateRangePicker)
+
 Smooth Date Range Picker is an android widget for selecting date range quickly and easily, following Material Design principle. This library is based on [datetimepicker from Android frameworks](https://android.googlesource.com/platform/frameworks/opt/datetimepicker/) and [Material DateTime Picker by wdullaer](https://github.com/wdullaer/MaterialDateTimePicker).
 
 Date Range Picker | Duration Number Pad | Date Range Picker Dark Theme | Date Range Picker Landscape
 ---- | ----| ----| ----
-![Date Range Picker](https://raw.githubusercontent.com/leavjenn/SmoothDateRangePicker/gh-pages/screenshots/date_range_picker.png) | ![Duration Number Pad](https://raw.githubusercontent.com/leavjenn/SmoothDateRangePicker/gh-pages/screenshots/date_duration_number_pad.png) | ![Date Range Picker Dark Theme](https://raw.githubusercontent.com/leavjenn/SmoothDateRangePicker/gh-pages/screenshots/date_range_picker_dark_theme.png) | ![Date Range Picker Landscape](https://raw.githubusercontent.com/leavjenn/SmoothDateRangePicker/gh-pages/screenshots/date_range_picker_landscape.png)
+![Date Range Picker](https://raw.githubusercontent.com/wsbak/SmoothDateRangePicker/gh-pages/screenshots/date_range_picker.png) | ![Duration Number Pad](https://raw.githubusercontent.com/wsbak/SmoothDateRangePicker/gh-pages/screenshots/date_duration_number_pad.png) | ![Date Range Picker Dark Theme](https://raw.githubusercontent.com/wsbak/SmoothDateRangePicker/gh-pages/screenshots/date_range_picker_dark_theme.png) | ![Date Range Picker Landscape](https://raw.githubusercontent.com/wsbak/SmoothDateRangePicker/gh-pages/screenshots/date_range_picker_landscape.png)
+
+Date Disable Enable Controls | Start Date Disabled | End Date Disabled | End Date Disabled Landscape Dark Theme
+---- | ----| ----| ----
+![Date Disable Enable Controls](https://raw.githubusercontent.com/wsbak/SmoothDateRangePicker/gh-pages/screenshots/Date_disable_enable_controls.png) | ![Start Date Disabled](https://raw.githubusercontent.com/wsbak/SmoothDateRangePicker/gh-pages/screenshots/Start_date_disabled.png) | ![End Date Disabled](https://raw.githubusercontent.com/wsbak/SmoothDateRangePicker/gh-pages/screenshots/End_date_disabled.png) | ![End Date Disabled Landscape Dark Theme](https://raw.githubusercontent.com/wsbak/SmoothDateRangePicker/gh-pages/screenshots/End_date_disabled_landscape_dark_theme.png)
 
 ## Setup
 
 **Gradle:**
 
-Add jcenter repository into project `build.gradle`:
+Add jitpack repository into project `build.gradle`:
 ```
 repositories {
-    jcenter()
+    maven { url "https://jitpack.io" }
 }
 ```
 
 Add the following into app `build.gradle`:
 ```
 dependencies {
-  compile 'com.leavjenn.smoothdaterangepicker:library:0.2.0'
+  implementation 'com.github.wsbak:SmoothDateRangePicker:0.4.1'
 }
 ```
 
@@ -33,12 +39,6 @@ SmoothDateRangePickerFragment.newInstance(SmoothDateRangePickerFragment.OnDateRa
 ```
 
 
-**Instantiation, specify the default selected date:**
-```
-SmoothDateRangePickerFragment.newInstance(SmoothDateRangePickerFragment.OnDateRangeSetListener callBack, 
-int year, int monthOfYear, int dayOfMonth)
-```
-
 After instantiation, remember to call
 
 `show (FragmentManager manager, String tag)`
@@ -49,10 +49,10 @@ SmoothDateRangePickerFragment smoothDateRangePickerFragment = SmoothDateRangePic
 new SmoothDateRangePickerFragment.OnDateRangeSetListener() {
                     @Override
                     public void onDateRangeSet(SmoothDateRangePickerFragment view,
-                                               int yearStart, int monthStart,
-                                               int dayStart, int yearEnd,
-                                               int monthEnd, int dayEnd) {
+                                               Calendar calendarStart,
+                                               Calendar calendarEnd) {
                         // grab the date range, do what you want
+                        // calendarStart or calendarEnd can be null if user disable it
                     }
                 });
                 
@@ -80,6 +80,34 @@ smoothDateRangePickerFragment.show(getFragmentManager(), "smoothDateRangePicker"
 **Set selectable max date:**
 
 `setMaxDate(Calendar calendar)`
+
+**Set the default selected start date:**
+
+`setStartDate(Calendar calendar)`
+
+**Set the default selected end date:**
+
+`setEndDate(Calendar calendar)`
+
+
+### Disable/Enable Date
+**Show disable/enable date control:**
+
+`setShowDateEnableDisable(true)`
+
+**Disable start date:**
+
+`enableStartDate(false)`
+
+**Disable end date:**
+
+`enableEndDate(false)`
+
+
+### Duration
+**Hide duration:**
+
+`setShowDuration(false)`
 
 
 ## License

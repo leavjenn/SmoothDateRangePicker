@@ -27,7 +27,7 @@
         android:background="@color/mdtp_accent_color"
         android:orientation="horizontal">
 
-        <include layout="@layout/sdrp_selected_date" />
+        <include android:id="@+id/sdrp_selected_date_start" layout="@layout/sdrp_selected_date" />
 
         <View
             android:id="@+id/hyphen"
@@ -36,7 +36,7 @@
             android:layout_gravity="center"
             android:background="@color/mdtp_accent_color_focused" />
 
-        <include layout="@layout/sdrp_selected_date_end" />
+        <include android:id="@+id/sdrp_selected_date_end" layout="@layout/sdrp_selected_date" />
 
     </LinearLayout>
 
